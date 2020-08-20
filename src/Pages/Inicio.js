@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 
 class Inicio extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Inicio extends React.Component {
   }
 
   render() {
-    const { login, jogador } = this.state; 
+    const { login, jogador } = this.state;
     return (
       <div>
         <label htmlFor="name">Name</label>
@@ -22,3 +22,6 @@ class Inicio extends React.Component {
     )
   }
 }
+
+export default Inicio;
+*/ 
