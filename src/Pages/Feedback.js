@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class feedback extends Component {
   render() {
@@ -6,6 +6,6 @@ export default class feedback extends Component {
       <div>
         .
       </div>
-    )
+    );
   }
 }

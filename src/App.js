@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './trivia.png';
 import { Switch, Route } from 'react-router-dom';
+import logo from './trivia.png';
 import Inicio from './Pages/Inicio';
 import Jogo from './Pages/Jogo';
 import Feedback from './Pages/Feedback';

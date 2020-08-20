@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 
 export default class button extends Component {
-
-  
-  
   render() {
       if (correct-answer)
     return (
@@ -18,4 +15,4 @@ export default class button extends Component {
       </div>
     )
   }
-}
+} */
