@@ -1,9 +1,10 @@
 import React from 'react';
 import logo from './trivia.png';
 import { Switch, Route } from 'react-router-dom';
-import início from './Pages/início';
-import jogo from './Pages/jogo';
-import feedback from './Pages/feedback';
+import Inicio from './Pages/Inicio';
+import Jogo from './Pages/Jogo';
+import Feedback from './Pages/Feedback';
+import Ranking from './Pages/Ranking';
 import NotFound from './Components/NotFound';
 import './App.css';
 
@@ -16,10 +17,10 @@ export default function App() {
           SUA VEZ
         </p>
         <Switch>
-          <Route path="/início" component={início} />
-          <Route path="/jogo" component={jogo} />
-          <Route path="/feedback" component={feedback} />
-          <Route exact path="/" component={início} />
+          <Route path="/ranking" component={Ranking} />
+          <Route path="/jogo" component={Jogo} />
+          <Route path="/feedback" component={Feedback} />
+          <Route exact path="/" component={Inicio} />
           <Route component={NotFound} />
         </Switch>
       </header>

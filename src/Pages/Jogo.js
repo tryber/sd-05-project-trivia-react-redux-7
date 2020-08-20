@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 
-export default class jogo extends Component {
+export default class Jogo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      style: {},
+    };
+  }
+  
   render() {
     return (
       <div className="jogo">
