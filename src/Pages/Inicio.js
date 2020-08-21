@@ -1,51 +1,54 @@
 // ref botao https://stackoverflow.com/questions/29951322/how-i-can-do-that
 // -login-button-disappear-when-i-login-jquery
-// ref geral - Grupo 10
+// ref geral - Grupo 10, Grupo 9 e slack
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Inicio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: '',
-      jogador: '',
+      name: '',
+      email: '',
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.botao = this.botao.bind(this);
   }
 
-  handleChange(event) {
+  handlChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
+  
+  handleEmail(event) {
+    const { email, value } = event.target;
+    this.setState({ [email]: value });
+  }
+
+  botão() {
+    const { name, email } = this.state;
+    if (!email || !name) return true;
+    return false;
+  }
 
   render() {
-    const { login, jogador } = this.state;
+    const { name, email } = this.state;
+    const { login } = this.props;
     return (
       <div>
         <label htmlFor="name">Name</label>
         <input name='jogador' type="text" data-testid="input-player-name" onChange={(event) => this.handleChange(event)} />
         <label htmlFor="email">Email</label>
-        <input name='login' type="email" data-testid="input-gravatar-email" onChange={(event) => this.handleChange(event)} />
+        <input name='login' type="email" data-testid="input-gravatar-email" onChange={(event) => this.handleEmail(event)} />
         <button id="playButton" data-testid="btn-play">Jogar</button>
-        <button id="settings" data-testid="btn-settings">Configurações</button>
+        <button id="settings" data-testid="btn-settings" disable={this.botao()} onClick={() => login(name, email)}>Configurações</button>
+        <Link to="/Config">
+          <button data-tesid="btn-settings">Configurações</button>
+        </Link>
       </div>
     )
   }
 }
 
 export default Inicio;
-<<<<<<< HEAD
-
-/* O botão "Jogar" deve ser desabilitado caso email e/ou nome não estejam preenchidos
-A pessoa que joga deve ter acesso à tela de configurações através da tela inicial
-
-O botão que leva a pessoa a tela de configurações deve possuir o atributo data-testid com o valor btn-settings
-A pessoa jogadora deve iniciar um jogo
-
-Após clicar no botão "Jogar", a pessoa deve ser redirecionada para a tela do jogo
-Ao clicar no botão "Jogar", um requisição para a API do Trivia deve ser feita para obter o token de jogador
-O token deve ser armazenado na aplicação e enviado em todas as requisições seguintes.
-Salve no LocalStorage o token recebido utilizando a chave token */
-=======
-*/
->>>>>>> f8fb509b479d014de6ba7cea69ae7226b85c30b1

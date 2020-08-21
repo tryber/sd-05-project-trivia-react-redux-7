@@ -15,14 +15,10 @@ export const ApiQuestion = () => (
   .then((response) => response.json())
   .then((result) => localStorage.setItem('question', JSON.stringify(result.results)));
 };
-=======
+
   .then((response) => response.json()
     .then((questions) => (response.ok ? Promise.resolve(questions) : Promise.reject(questions)))
   )
 );
-<<<<<<< HEAD
 
 export default ApiQuestion;
->>>>>>> 179e4335089b9bd637ee8dd77c68501c22cd8a8d
-=======
->>>>>>> 81e0778f3096a8088696d6da034755e7b90fd6f4
