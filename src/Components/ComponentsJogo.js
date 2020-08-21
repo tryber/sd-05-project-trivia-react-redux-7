@@ -1,3 +1,5 @@
+// referência https://github.com/tryber/sd-03-project-trivia-react-redux-05/pull/10
+
 /* import React, { Component } from 'react';
 
 export default class button extends Component {

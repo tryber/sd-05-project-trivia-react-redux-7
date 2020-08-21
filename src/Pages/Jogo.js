@@ -1,6 +1,10 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fechQuestion } from '../Actions';
+import '../App.css';
 
-export default class Jogo extends Component {
+class Jogo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -8,7 +12,15 @@ export default class Jogo extends Component {
     };
   }
 
+  componentDidMount() {
+    const { startNemQuestion } = this.props;
+    startNemQuestion();
+  }
+
   render() {
+    const { question } = this.props;
+    console.log(question);
+
     return (
       <div className="jogo">
         <header className="header-jogo">
@@ -16,7 +28,7 @@ export default class Jogo extends Component {
           <h2 data-testid="header-player-name">{'Jogador: name'}</h2>
           <h6 data-testid="header-score">{'Nota: 0'}</h6>
         </header>
-        <body>
+        <div>
           <div className="pergunta">
             <div className="category" data-testid="question-category">{'category'}</div>
             <div className="question" data-testid="question-text">{'question'}</div>
@@ -25,8 +37,23 @@ export default class Jogo extends Component {
           <div className="alternativas">
             <button>test</button>
           </div>
-        </body>
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  question: state,
+});
+
+const mapDispathToProps = (dispath) => ({
+  startNemQuestion: () => dispath(fechQuestion()),
+});
+
+Jogo.propTypes = {
+  question: PropTypes.instanceOf(Object).isRequired,
+  startNemQuestion: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispathToProps)(Jogo);
