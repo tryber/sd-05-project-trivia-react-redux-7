@@ -1,5 +1,11 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import logo from './trivia.png';
+import Inicio from './Pages/Inicio';
+import Jogo from './Pages/Jogo';
+import Feedback from './Pages/Feedback';
+import Ranking from './Pages/Ranking';
+import NotFound from './Components/NotFound';
 import './App.css';
 
 export default function App() {
@@ -10,6 +16,13 @@ export default function App() {
         <p>
           SUA VEZ
         </p>
+        <Switch>
+          <Route path="/ranking" component={Ranking} />
+          <Route path="/jogo" component={Jogo} />
+          <Route path="/feedback" component={Feedback} />
+          <Route exact path="/" component={Inicio} />
+          <Route component={NotFound} />
+        </Switch>
       </header>
     </div>
   );

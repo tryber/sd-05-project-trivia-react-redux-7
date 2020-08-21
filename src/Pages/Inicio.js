@@ -34,6 +34,7 @@ class Inicio extends React.Component {
 }
 
 export default Inicio;
+<<<<<<< HEAD
 
 /* O botão "Jogar" deve ser desabilitado caso email e/ou nome não estejam preenchidos
 A pessoa que joga deve ter acesso à tela de configurações através da tela inicial
@@ -46,3 +47,6 @@ Após clicar no botão "Jogar", a pessoa deve ser redirecionada para a tela do j
 Ao clicar no botão "Jogar", um requisição para a API do Trivia deve ser feita para obter o token de jogador
 O token deve ser armazenado na aplicação e enviado em todas as requisições seguintes.
 Salve no LocalStorage o token recebido utilizando a chave token */
+=======
+*/
+>>>>>>> f8fb509b479d014de6ba7cea69ae7226b85c30b1
