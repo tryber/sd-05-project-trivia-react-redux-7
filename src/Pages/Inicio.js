@@ -40,7 +40,6 @@ export default Inicio;
 A pessoa que joga deve ter acesso à tela de configurações através da tela inicial
 
 O botão que leva a pessoa a tela de configurações deve possuir o atributo data-testid com o valor btn-settings
-A tela de configurações deve possuir um título com o atributo data-testid contendo o valor settings-title
 A pessoa jogadora deve iniciar um jogo
 
 Após clicar no botão "Jogar", a pessoa deve ser redirecionada para a tela do jogo

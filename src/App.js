@@ -5,7 +5,7 @@ import Inicio from './Pages/Inicio';
 import Jogo from './Pages/Jogo';
 import Feedback from './Pages/Feedback';
 import Ranking from './Pages/Ranking';
-import NotFound from './Components/NotFound';
+import NotFound from './Pages/NotFound';
 import './App.css';
 
 export default function App() {
