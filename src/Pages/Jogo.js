@@ -44,7 +44,7 @@ class Jogo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  question: state,
+  question: state.questionReducer.questions
 });
 
 const mapDispathToProps = (dispath) => ({

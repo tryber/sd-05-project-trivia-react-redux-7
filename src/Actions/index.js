@@ -1,4 +1,4 @@
-import ApiQuestion from '../Services/API';
+import { ApiQuestion, ResultToken } from '../Services/API';
 
 export const START_NEW_QUESTION_FAILURE = 'START_NEW_QUESTION_FAILURE';
 export const START_NEW_QUESTION_SUCCESS = 'START_NEW_QUESTION_SUCCESS';
@@ -21,7 +21,7 @@ const startNemQuestionSuccess = (questions) => ({
 export function fechQuestion() {
   return (dispath) => {
     dispath(startNemQuestion());
-
+    ResultToken();
     return ApiQuestion()
       .then(
         (results) => dispath(startNemQuestionSuccess(results.results)))
