@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ranking extends Component {
+export default class Ranking extends Component {
   render() {
     return (
       <div>
