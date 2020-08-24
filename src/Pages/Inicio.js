@@ -3,6 +3,7 @@
 // ref geral - Grupo 10, Grupo 9 e slack
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Inicio extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Inicio extends React.Component {
     this.botao = this.botao.bind(this);
   }
 
-  handlChange(event) {
+  handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
@@ -26,7 +27,7 @@ class Inicio extends React.Component {
     this.setState({ [email]: value });
   }
 
-  botão() {
+  botao() {
     const { name, email } = this.state;
     if (!email || !name) return true;
     return false;
@@ -53,5 +54,9 @@ class Inicio extends React.Component {
     );
   }
 }
+
+Inicio.propTypes = {
+  login: PropTypes.string.isRequired,
+};
 
 export default Inicio;
