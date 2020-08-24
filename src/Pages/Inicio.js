@@ -11,7 +11,7 @@ class Inicio extends React.Component {
     this.state = {
       name: '',
       email: '',
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.botao = this.botao.bind(this);
@@ -39,14 +39,14 @@ class Inicio extends React.Component {
     return (
       <div>
         <label htmlFor="name">Name</label>
-        <input name="jogador" type="text" data-testid="input-player-name"
-          onChange={(event) => this.handleChange(event)} />
+        <input name="jogador" type="text" data-testid="input-player-name" onChange={(event) =>
+          this.handleChange(event)} />
         <label htmlFor="email">Email</label>
-        <input name="login" type="email" data-testid="input-gravatar-email"
-          onChange={(event) => this.handleEmail(event)} />
+        <input name="login" type="email" data-testid="input-gravatar-email" onChange={(event) =>
+          this.handleEmail(event)} />
         <button id="playButton" data-testid="btn-play">Jogar</button>
-        <button id="settings" data-testid="btn-settings"
-          disable={this.botao()} onClick={() => login(name, email)}>Configurações</button>
+        <button id="settings" data-testid="btn-settings" disable={this.botao()} onClick={() =>
+          login(name, email)}>Configurações</button>
         <Link to="/Config">
           <button data-tesid="btn-settings">Configurações</button>
         </Link>

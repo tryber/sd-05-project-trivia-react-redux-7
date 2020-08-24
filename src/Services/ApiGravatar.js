@@ -18,4 +18,4 @@ const login = (email) => {
   return `${API}${hash}`;
 };
 
-export default login;
+export default ApiGravatar;
