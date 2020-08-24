@@ -2,33 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Header.css';
 
-const nickName = {
-  fontFamily: 'Roboto',
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  fontSize: '26px',
-  lineHeight: '30px',
-};
-
-const imgStyle = {
-  // border: "1px black solid",
-  height: '50px',
-  margin: '0 5px 0 0',
-};
-
-const scoreStyle = {
-  fontFamily: 'Roboto',
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  fontSize: '30px',
-  lineHeight: '30px',
-};
-
-const playerAvatar = {
-  alignItems: 'center',
-  display: 'inline-flex',
-};
-
 class Header extends Component {
   render() {
     const { imagePath, player, score } = this.props;
@@ -36,7 +9,7 @@ class Header extends Component {
       <header className="header"
       // style={headerStyle}
       >
-        <div className="player-avatar" style={playerAvatar}>
+        <div className="player-avatar" >
           <img
             src={imagePath}
             className="header-player-picture"
