@@ -32,7 +32,7 @@ class FeedbackMessage extends Component {
       </div>
     );
   }
-};
+}
 
 Message.propTypes = {
   message: PropTypes.string.isRequired,
