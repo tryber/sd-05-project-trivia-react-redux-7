@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 const Message = (props) => {
   const { message } = props;
-  return <p data-testid='feedback-test'>{message}</p>;
+  return <p data-testid="feedback-test">{message}</p>;
 };
 
 const TotalScore = (props) => {
   return (
-    <span data-testid='deedback-total-score'>
+    <span data-testid="deedback-total-score">
       Um total de <span>{props.score}</span> pontos
     </span>
   );
@@ -20,7 +20,7 @@ class FeedbackMessage extends Component {
 
   messageByScore(wins) {
     return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
-  };
+  }
 
   render() {
     const { wins } = this.props;
@@ -33,5 +33,13 @@ class FeedbackMessage extends Component {
     );
   }
 }
+
+Message.propTypes = {
+  message: PropTypes.string.isRequired,
+};
+
+TotalScore.propTypes = {
+  score: PropTypes.number.isRequired,
+};
 
 export default FeedbackMessage;
