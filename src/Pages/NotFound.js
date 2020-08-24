@@ -1,24 +1,10 @@
-/* import React from 'react';
-class Inicio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: '',
-      jogador: '',
-    }
-  }
+import React, { Component } from 'react';
+import '../App.css';
+
+class NotFound extends Component {
   render() {
-    const { login, jogador } = this.state;
-    return (
-      <div>
-        <label htmlFor="name">Name</label>
-        <input name='jogador' type="text" data-testid="input-player-name" />
-        <label htmlFor="email">Email</label>
-        <input name='login' type="email" data-testid="input-gravatar-email" />
-        <button data-testid="btn-play">Jogar</button>
-      </div>
-    )
+    return <div className="notFound">Página não encontrada</div>;
   }
 }
-export default Inicio;
-*/
+
+export default NotFound;
