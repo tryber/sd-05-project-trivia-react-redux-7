@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Contador extends React.Component {
@@ -31,4 +31,4 @@ class Contador extends React.Component {
   ReactDOM.render(
     <Contador />,
   );
-  
+*/ 
