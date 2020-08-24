@@ -1,19 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import './Header.css';
-
-const headerStyle = {
-  alignItems: 'center',
-  // border: "1px black solid",
-  display: 'inline-flex',
-  height: '70px',
-  justifyContent: 'space-around',
-  left: '0',
-  padding: '0 5px',
-  position: 'absolute',
-  top: '0',
-  width: '100%',
-};
+import './Header.css';
 
 const nickName = {
   fontFamily: 'Roboto',
@@ -46,20 +33,22 @@ class Header extends Component {
   render() {
     const { imagePath, player, score } = this.props;
     return (
-      <header className="header" style={headerStyle}>
+      <header className="header"
+      // style={headerStyle}
+      >
         <div className="player-avatar" style={playerAvatar}>
           <img
             src={imagePath}
             className="header-player-picture"
             data-testid="header-profile-picture"
             alt="Player`s avatar"
-            style={imgStyle}
+            // style={imgStyle}
           />
-          <p className={nickName} data-testid="header-player-name">
+          <p className="nickName" data-testid="header-player-name">
             Jogador: {player}
           </p>
         </div>
-        <p className={scoreStyle} data-testid="header-player-score">
+        <p className="scoreStyle" data-testid="header-player-score">
           Pontos: {score}
         </p>
       </header>
