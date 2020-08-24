@@ -18,7 +18,7 @@ class FeedbackMessage extends Component {
     super(props);
   }
 
-  messageByScore = (wins) => {
+  messageByScore = wins => {
     return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
   };
 
