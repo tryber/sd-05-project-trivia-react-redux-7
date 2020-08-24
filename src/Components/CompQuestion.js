@@ -18,12 +18,14 @@ class CompQuestion extends Component {
 /*     questionIndex = () => {
       return (
         <div>
+        .
           {console.log(questions)},
         </div>
       );
     }; */
     return (
       <div>
+        {/* {this.questionIndex()} */}
         .this.questionIndex
       </div>
     );

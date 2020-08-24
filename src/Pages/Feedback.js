@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Components/Header';
 import FeedbackMessage from '../Components/FeedbackMessage';
+import ButtonRanking from '../Components/ButtonRanking';
+import PlayAgain from '../Components/ButtonPlayAgain';
 
 export default class feedback extends Component {
   render() {
@@ -12,6 +14,8 @@ export default class feedback extends Component {
           score="20"
         />
         <FeedbackMessage wins={3} />
+        <ButtonRanking />
+        <PlayAgain />
       </div>
     );
   }
