@@ -13,6 +13,11 @@ const TotalScore = (props) => (
 );
 
 class FeedbackMessage extends Component {
+  constructor(props) {
+    super (props);
+    this.messageByScore = this.messageByScore.bind(this);
+  }
+
   messageByScore(wins) {
     return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
   }
@@ -36,5 +41,9 @@ Message.propTypes = {
 TotalScore.propTypes = {
   score: PropTypes.number.isRequired,
 };
+
+FeedbackMessage.propTypes = {
+  wins: PropTypes.number.isRequired,
+}
 
 export default FeedbackMessage;
