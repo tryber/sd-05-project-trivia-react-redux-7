@@ -13,7 +13,6 @@ class Inicio extends React.Component {
       email: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.handleEmail = this.handleEmail.bind(this);
     this.buttonState = this.buttonState.bind(this);
   }
 
