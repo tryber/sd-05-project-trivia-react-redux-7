@@ -57,8 +57,7 @@ class Inicio extends React.Component {
           id="settings"
           data-testid="btn-settings"
           disable={this.botao()}
-          onClick={() => login(name, email)}>
-          Configurações
+          onClick={() => login(name, email)}>Configurações
         </button>
         <Link to="/Config">
           <button data-tesid="btn-settings">Configurações</button>
