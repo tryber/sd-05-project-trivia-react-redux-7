@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CompQuestion from '../Components/CompQuestion';
 import { fechQuestion } from '../Actions';
 import '../App.css';
 
 class Jogo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      style: {},
-    };
-  }
 
   componentDidMount() {
     const { startNemQuestion } = this.props;
@@ -18,8 +13,8 @@ class Jogo extends Component {
   }
 
   render() {
-    const { question } = this.props;
-    console.log(question);
+    const { questions } = this.props;
+    console.log(questions);
 
     return (
       <div className="jogo">
@@ -31,7 +26,7 @@ class Jogo extends Component {
         <div>
           <div className="pergunta">
             <div className="category" data-testid="question-category">{'category'}</div>
-            <div className="question" data-testid="question-text">{'question'}</div>
+            <div className="question" data-testid="question-text"><CompQuestion /></div>
             <div>{'Tempo: 30s'}</div>
           </div>
           <div className="alternativas">
@@ -44,7 +39,7 @@ class Jogo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  question: state.questionReducer.questions
+  questions: state.questionReducer.questions
 });
 
 const mapDispathToProps = (dispath) => ({
