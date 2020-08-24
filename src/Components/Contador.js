@@ -14,11 +14,11 @@ class Contador extends React.Component {
         currentTime: prevState.currentTime - 1;
       }));
     }
-  
+
     componentDidMount(){
       this.timerID = setInterval((prevState, props) => this.tempo(),1000);
     }
-  
+
     render() {
       return (
         <div>
@@ -27,8 +27,8 @@ class Contador extends React.Component {
       );
     }
   }
-  
+
   ReactDOM.render(
     <Contador />,
   );
-*/ 
+*/
