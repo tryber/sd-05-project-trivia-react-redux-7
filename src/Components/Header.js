@@ -71,6 +71,6 @@ Header.propTypes = {
   imagePath: PropTypes.string.isRequired,
   player: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-}
+};
 
 export default Header;
