@@ -39,7 +39,7 @@ class Jogo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  questions: state.questionReducer.questions
+  questions: state.questionReducer.questions,
 });
 
 const mapDispathToProps = (dispath) => ({
@@ -47,7 +47,7 @@ const mapDispathToProps = (dispath) => ({
 });
 
 Jogo.propTypes = {
-  question: PropTypes.instanceOf(Object).isRequired,
+  questions: PropTypes.instanceOf(Object).isRequired,
   startNemQuestion: PropTypes.func.isRequired,
 };
 

@@ -5,11 +5,6 @@ const CryptoJS = require("crypto-js");
 const API = 'https://www.gravatar.com/avatar/';
 const imagem = 'https://www.gravatar.com/avatar/2d3bf5b67282f5f466e503d7022abcf3';
 
-const login = () => {
-const CryptoJS = require('crypto-js');
-const API = 'https://www.gravatar.com/avatar/';
-const imagem = 'https://www.gravatar.com/avatar/2d3bf5b67282f5f466e503d7022abcf3';
-
 const login = (email) => {
   const hash = CryptoJS.MD5(email.toLowerCase().toString());
   if (hash === '') {
@@ -18,4 +13,4 @@ const login = (email) => {
   return `${API}${hash}`;
 };
 
-export default ApiGravatar;
+export default login;
