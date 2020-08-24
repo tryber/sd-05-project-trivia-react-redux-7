@@ -13,8 +13,8 @@ class Inicio extends React.Component {
       email: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.botao = this.botao.bind(this);
+    // this.handleEmail = this.handleEmail.bind(this);
+    this.buttonState = this.buttonState.bind(this);
   }
 
   handleChange(event) {
@@ -22,14 +22,9 @@ class Inicio extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleEmail(event) {
-    const { email, value } = event.target;
-    this.setState({ [email]: value });
-  }
-
-  botao() {
+  buttonState() {
     const { name, email } = this.state;
-    if (!email || !name) return true;
+    if (email === '' || name === '') return true;
     return false;
   }
 
@@ -40,28 +35,28 @@ class Inicio extends React.Component {
       <div>
         <label htmlFor="name">Name</label>
         <input
-          name="jogador"
+          name="name"
           type="text"
           data-testid="input-player-name"
           onChange={(event) => this.handleChange(event)}
         />
         <label htmlFor="email">Email</label>
         <input
-          name="login"
-          type="email"
+          name="email"
+          type="text"
           data-testid="input-gravatar-email"
-          onChange={(event) => this.handleEmail(event)}
+          onChange={(event) => this.handleChange(event)}
         />
-        <button id="playButton" data-testid="btn-play">Jogar</button>
+        <button
+          id="playButton"
+          data-testid="btn-play"
+          disabled={this.buttonState()}>Jogar</button>
         <button
           id="settings"
           data-testid="btn-settings"
-          disable={this.botao()}
+          disabled={this.buttonState()}
           onClick={() => login(name, email)}
         >Configurações</button>
-        <Link to="/Config">
-          <button data-tesid="btn-settings">Configurações</button>
-        </Link>
       </div>
     );
   }
