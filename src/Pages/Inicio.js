@@ -53,7 +53,7 @@ class Inicio extends React.Component {
           onChange={(event) => this.handleEmail(event)}
         />
         <button id="playButton" data-testid="btn-play">Jogar</button>
-        <button 
+        <button
           id="settings"
           data-testid="btn-settings"
           disable={this.botao()}
