@@ -16,11 +16,6 @@ function messageByScore(wins) {
   return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
 }
 class FeedbackMessage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
   render() {
     const { wins } = this.props;
     return (
