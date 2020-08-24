@@ -11,7 +11,6 @@ export const ResultToken = () => {
 
 export const ApiQuestion = () => (
   fetch(`https://opentdb.com/api.php?amount=5&token=${localStorage.getItem('token')}`)
-<<<<<<< HEAD
   .then((response) => response.json())
   .then((result) => localStorage.setItem('question', JSON.stringify(result.results)));
 };
