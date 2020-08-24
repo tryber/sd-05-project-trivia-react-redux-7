@@ -12,21 +12,20 @@ const TotalScore = (props) => (
   </span>
 );
 
+function messageByScore(wins) {
+  return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
+}
 class FeedbackMessage extends Component {
   constructor(props) {
     super(props);
-    this.messageByScore = this.messageByScore.bind(this);
   }
 
-  messageByScore(wins) {
-    return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
-  }
 
   render() {
     const { wins } = this.props;
     return (
       <div>
-        <Message message={this.messageByScore(wins)} />
+        <Message message={messageByScore(wins)} />
         <span>Você acertou {wins} questões!</span>
         <TotalScore score={'50'} />
       </div>
