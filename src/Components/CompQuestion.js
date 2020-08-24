@@ -17,13 +17,14 @@ class CompQuestion extends Component {
     const questionIndex = () => {
       return(
         <div>
+        .
           {console.log(questions)},
         </div>
       )
     }
     return (
       <div>
-        {this.questionIndex}
+        {this.questionIndex()}
       </div>
     )     
   }

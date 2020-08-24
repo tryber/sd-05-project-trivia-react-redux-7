@@ -30,3 +30,6 @@ cypress/videos/
 cypress/reports/
 #ignorando o avatar
 /src/avatar.png
+
+package-lock.json
+package.json
