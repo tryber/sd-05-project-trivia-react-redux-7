@@ -7,7 +7,6 @@ class Header extends Component {
     const { imagePath, player, score } = this.props;
     return (
       <header className="header"
-      // style={headerStyle}
       >
         <div className="player-avatar" >
           <img
@@ -15,7 +14,6 @@ class Header extends Component {
             className="header-player-picture"
             data-testid="header-profile-picture"
             alt="Player`s avatar"
-            // style={imgStyle}
           />
           <p className="nickName" data-testid="header-player-name">
             Jogador: {player}
