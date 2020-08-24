@@ -1,0 +1,39 @@
+.header {
+  align-items: center;
+  border: 1px solid black;
+  display: inline-flex;
+  height: 70px;
+  justify-content: space-around;
+  left: 0;
+  padding: 0 5px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.nickName {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.imgStyle {
+  border: 1px solid black;
+  height: 50px;
+  margin: 0 5px 0 0;
+}
+
+.scoreStyle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.player-avatar {
+  align-items: center;
+  display: inline-flex;
+}
