@@ -7,7 +7,8 @@ class Header extends Component {
     const { imagePath, player, score } = this.props;
     return (
       <header
-        className="header">
+        className="header"
+      >
         <div className="player-avatar">
           <img
             src={imagePath}

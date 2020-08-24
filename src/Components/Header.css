@@ -12,7 +12,6 @@
 }
 
 .nickName {
-  font-family: Roboto;
   font-size: 26px;
   font-style: normal;
   line-height: 30px;
@@ -25,7 +24,6 @@
 }
 
 .scoreStyle {
-  font-family: Roboto;
   font-size: 30px;
   font-style: normal;
   line-height: 30px;
