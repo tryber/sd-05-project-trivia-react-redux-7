@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Header from '../Components/Header';
 import FeedbackMessage from '../Components/FeedbackMessage';
 
