@@ -5,14 +5,13 @@ const NameInput = (props) => {
   return (
     <label htmlFor="email">
       Name
-      <input
-        name="name"
-        type="text"
-        data-testid="input-palyer-name"
-        onChange={onChange}
-      />
+      <input name="name" type="text" data-testid="input-palyer-name" onChange={onChange} />
     </label>
   );
 };
+
+NameInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+}
 
 export default NameInput;
