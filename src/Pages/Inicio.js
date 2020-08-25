@@ -48,31 +48,40 @@ class Inicio extends React.Component {
           data-testid="input-gravatar-email"
           onChange={(event) => this.handleChange(event)}
         />
-        <button
-          id="playButton"
-          data-testid="btn-play"
-          disabled={this.buttonState()}
-          onClick={() => {getGravatarAvatar(name, email)}}>Jogar</button>
+        <Link to="/jogo">
+          <button
+            id="playButton"
+            data-testid="btn-play"
+            disabled={this.buttonState()}
+            onClick={() => {
+              getGravatarAvatar(name, email);
+            }}
+          >
+            Jogar
+          </button>
+        </Link>
         <button
           id="settings"
           data-testid="btn-settings"
           disabled={this.buttonState()}
           onClick={() => login(name, email)}
-        >Configurações</button>
+        >
+          Configurações
+        </button>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLogged: state.loginReducer.isLogged,
   name: state.loginReducer.name,
   email: state.loginReducer.email,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getGravatarAvatar: (email, name) => dispatch(getGravatarSuccess(email, name))
-})
+const mapDispatchToProps = (dispatch) => ({
+  getGravatarAvatar: (email, name) => dispatch(getGravatarSuccess(email, name)),
+});
 
 Inicio.propTypes = {
   login: PropTypes.string.isRequired,

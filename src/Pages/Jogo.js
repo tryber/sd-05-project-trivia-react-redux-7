@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CompQuestion from '../Components/CompQuestion';
 import { fechQuestion } from '../Actions';
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 class Jogo extends Component {
 
@@ -32,6 +33,9 @@ class Jogo extends Component {
           <div className="alternativas">
             <button>test</button>
           </div>
+          <Link to="/feedback">
+            feedback
+          </Link>
         </div>
       </div>
     );
@@ -39,6 +43,7 @@ class Jogo extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  ...state.loginReducer,
   questions: state.questionReducer.questions,
 });
 
