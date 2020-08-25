@@ -13,6 +13,6 @@ const EmailInput = (props) => {
 
 EmailInput.propTypes = {
   onChange: PropTypes.func.isRequired,
-}
+};
 
 export default EmailInput;

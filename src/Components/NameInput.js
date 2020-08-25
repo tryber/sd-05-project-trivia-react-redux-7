@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NameInput = (props) => {
   const { onChange } = props;
@@ -12,6 +13,6 @@ const NameInput = (props) => {
 
 NameInput.propTypes = {
   onChange: PropTypes.func.isRequired,
-}
+};
 
 export default NameInput;
