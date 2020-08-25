@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getGravatarSuccess } from '../Actions';
+import EmailInput from '../Components/EmailInput';
+import NameInput from '../Components/NameInput';
 
 class Inicio extends React.Component {
   constructor(props) {
@@ -34,13 +36,10 @@ class Inicio extends React.Component {
     const { login, getGravatarAvatar } = this.props;
     return (
       <div>
-        <label htmlFor="name">Name</label>
-        <input
-          name="name" type="text" data-testid="input-player-name"
+        <NameInput
           onChange={(event) => this.handleChange(event)}
         />
-        <label htmlFor="email">Email</label>
-        <input name="email" type="text" data-testid="input-gravatar-email" 
+        <EmailInput
           onChange={(event) => this.handleChange(event)}
         />
         <Link to="/jogo">
