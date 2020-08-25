@@ -36,23 +36,16 @@ class Inicio extends React.Component {
       <div>
         <label htmlFor="name">Name</label>
         <input
-          name="name"
-          type="text"
-          data-testid="input-player-name"
+          name="name" type="text" data-testid="input-player-name"
           onChange={(event) => this.handleChange(event)}
         />
         <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          data-testid="input-gravatar-email"
+        <input name="email" type="text" data-testid="input-gravatar-email" 
           onChange={(event) => this.handleChange(event)}
         />
         <Link to="/jogo">
           <button
-            id="playButton"
-            data-testid="btn-play"
-            disabled={this.buttonState()}
+            id="playButton" data-testid="btn-play" disabled={this.buttonState()}
             onClick={() => {
               getGravatarAvatar(name, email);
             }}
@@ -61,9 +54,7 @@ class Inicio extends React.Component {
           </button>
         </Link>
         <button
-          id="settings"
-          data-testid="btn-settings"
-          disabled={this.buttonState()}
+          id="settings" data-testid="btn-settings" disabled={this.buttonState()}
           onClick={() => login(name, email)}
         >
           Configurações
@@ -85,7 +76,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 Inicio.propTypes = {
   login: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   getGravatarAvatar: PropTypes.func.isRequired,
 };
 
