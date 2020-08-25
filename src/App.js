@@ -7,11 +7,6 @@ import Feedback from './Pages/Feedback';
 import Ranking from './Pages/Ranking';
 import NotFound from './Pages/NotFound';
 import './App.css';
-// import Inicio from './Pages/Inicio';
-// import Jogo from './Pages/Jogo';
-// import Feedback from './Pages/Feedback';
-// import Ranking from './Pages/ranking';
-// import NotFound from './Pages/NotFound';
 
 export default function App() {
   return (
