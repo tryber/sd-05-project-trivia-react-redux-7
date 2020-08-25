@@ -4,6 +4,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getGravatarSuccess } from '../Actions';
 
 class Inicio extends React.Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class Inicio extends React.Component {
 
   render() {
     const { name, email } = this.state;
-    const { login } = this.props;
+    const { login, getGravatarAvatar } = this.props;
     return (
       <div>
         <label htmlFor="name">Name</label>
@@ -49,7 +51,8 @@ class Inicio extends React.Component {
         <button
           id="playButton"
           data-testid="btn-play"
-          disabled={this.buttonState()}>Jogar</button>
+          disabled={this.buttonState()}
+          onClick={() => {getGravatarAvatar(name, email)}}>Jogar</button>
         <button
           id="settings"
           data-testid="btn-settings"
@@ -61,8 +64,21 @@ class Inicio extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLogged: state.loginReducer.isLogged,
+  name: state.loginReducer.name,
+  email: state.loginReducer.email,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getGravatarAvatar: (email, name) => dispatch(getGravatarSuccess(email, name))
+})
+
 Inicio.propTypes = {
   login: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool,
+  name: PropTypes.string,
+  email: PropTypes.string,
 };
 
-export default Inicio;
+export default connect(mapStateToProps, mapDispatchToProps)(Inicio);
