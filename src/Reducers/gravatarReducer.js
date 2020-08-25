@@ -1,13 +1,11 @@
-import {
-  GET_GRAVATAR_SUCCESS,
-} from '../Actions';
+import { GET_GRAVATAR_SUCCESS } from '../Actions';
 
 const INITIAL_STATE = {
   isLogged: false,
-}
+};
 
 const loginReducer = (state = INITIAL_STATE, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case GET_GRAVATAR_SUCCESS:
       return {
         ...state,
@@ -19,6 +17,6 @@ const loginReducer = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-}
+};
 
 export default loginReducer;

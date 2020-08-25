@@ -9,9 +9,7 @@ class Feedback extends Component {
   render() {
     return (
       <div className="container">
-        <Header
-          score="20"
-        />
+        <Header score="20" />
         <FeedbackMessage wins={3} />
         <ButtonRanking />
         <PlayAgain />
@@ -20,11 +18,16 @@ class Feedback extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { loginReducer: {isLogged, gravatarLink, name, email } } = state;
+const mapStateToProps = (state) => {
+  const {
+    loginReducer: { isLogged, gravatarLink, name, email },
+  } = state;
   return {
-    isLogged, gravatarLink, name, email,
-  }
-}
+    isLogged,
+    gravatarLink,
+    name,
+    email,
+  };
+};
 
 export default connect(mapStateToProps)(Feedback);

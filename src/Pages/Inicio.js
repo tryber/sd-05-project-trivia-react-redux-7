@@ -85,9 +85,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 Inicio.propTypes = {
   login: PropTypes.string.isRequired,
-  isLogged: PropTypes.bool,
-  name: PropTypes.string,
-  email: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  getGravatarAvatar: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inicio);

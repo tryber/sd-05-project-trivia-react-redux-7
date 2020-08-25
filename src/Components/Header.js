@@ -7,9 +7,7 @@ class Header extends Component {
   render() {
     const { gravatarLink, name, score } = this.props;
     return (
-      <header
-        className="header"
-      >
+      <header className="header">
         <div className="player-avatar">
           <img
             src={gravatarLink}
@@ -29,12 +27,15 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { loginReducer: {gravatarLink, name } } = state;
+const mapStateToProps = (state) => {
+  const {
+    loginReducer: { gravatarLink, name },
+  } = state;
   return {
-    gravatarLink, name,
-  }
-}
+    gravatarLink,
+    name,
+  };
+};
 
 Header.propTypes = {
   gravatarLink: PropTypes.string.isRequired,
