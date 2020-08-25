@@ -7,12 +7,9 @@ import PlayAgain from '../Components/ButtonPlayAgain';
 
 class Feedback extends Component {
   render() {
-    const {isLogged, gravatarLink, name, email,} = this.props;
     return (
       <div className="container">
         <Header
-          imagePath={gravatarLink}
-          player={name}
           score="20"
         />
         <FeedbackMessage wins={3} />
