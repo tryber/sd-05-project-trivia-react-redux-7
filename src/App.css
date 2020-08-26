@@ -63,8 +63,10 @@
 /* jogo */
 .jogo {
   background-color: whitesmoke;
+  border-radius: 20px;
   color: black;
-  min-height: 600px;
+  min-height: 300px;
+  max-width: 600px;
   min-width: 600px;
   padding: 10px 30px;
 }

@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CompQuestion from '../Components/CompQuestion';
+import CompCategory from '../Components/CompCategory';
 import { fechQuestion } from '../Actions';
+import BotoesResposta from '../Components/BotoesResposta';
+import BotaoProximo from '../Components/BotaoProximo';
 import '../App.css';
 
 class Jogo extends Component {
@@ -13,9 +16,6 @@ class Jogo extends Component {
   }
 
   render() {
-    const { questions } = this.props;
-    console.log(questions);
-
     return (
       <div className="jogo">
         <header className="header-jogo">
@@ -25,13 +25,14 @@ class Jogo extends Component {
         </header>
         <div>
           <div className="pergunta">
-            <div className="category" data-testid="question-category">{'category'}</div>
+            <div className="category" data-testid="question-category"><CompCategory /></div>
             <div className="question" data-testid="question-text"><CompQuestion /></div>
             <div>{'Tempo: 30s'}</div>
           </div>
           <div className="alternativas">
-            <button>test</button>
+            <BotoesResposta />
           </div>
+          <BotaoProximo />
         </div>
       </div>
     );
@@ -47,7 +48,7 @@ const mapDispathToProps = (dispath) => ({
 });
 
 Jogo.propTypes = {
-  questions: PropTypes.instanceOf(Object).isRequired,
+  questions: PropTypes.arrayOf(PropTypes.instanceOf(Object)),
   startNemQuestion: PropTypes.func.isRequired,
 };
 

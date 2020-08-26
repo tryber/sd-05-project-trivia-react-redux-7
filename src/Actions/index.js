@@ -29,3 +29,10 @@ export function fechQuestion() {
         (error) => dispath(startNemQuestionFailure(error.message)));
   };
 }
+
+export const CHANGEINDEX = 'CHANGEINDEX';
+
+export const changeIndex = (indexJogo) => ({
+  type: 'CHANGEINDEX',
+  indexJogo,
+});

@@ -52,7 +52,9 @@ class Inicio extends React.Component {
           data-testid="input-gravatar-email"
           onChange={(event) => this.handleEmail(event)}
         />
-        <button id="playButton" data-testid="btn-play">Jogar</button>
+        <Link to="/Jogo">
+          <button id="playButton" data-testid="btn-play">Jogar</button>
+        </Link>
         <button
           id="settings"
           data-testid="btn-settings"

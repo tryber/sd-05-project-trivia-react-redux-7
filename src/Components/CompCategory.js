@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-class CompQuestion extends Component {
+class CompCategoty extends Component {
 
-  questionIndex = () => {
+  categoryIndex = () => {
     const { questions } = this.props;
     if (questions.length > 0) {
       const { indexJogo } = this.props;
       return (
         <div>
-          {(questions.map(questao => questao.question)[indexJogo])}
+          {(questions.map(questao => questao.category)[indexJogo])}
         </div>
       );
     }
@@ -19,7 +19,7 @@ class CompQuestion extends Component {
   render() {
     return (
       <div>
-        {this.questionIndex()}
+        {this.categoryIndex()}
       </div>
     );
   }
@@ -30,8 +30,8 @@ const mapStateToProps = (state) => ({
   indexJogo: state.indexJogoReducer.indexJogo,
 });
 
-CompQuestion.propTypes = {
+CompCategoty.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.instanceOf(Object)),
 };
 
-export default connect(mapStateToProps)(CompQuestion);
+export default connect(mapStateToProps)(CompCategoty);
