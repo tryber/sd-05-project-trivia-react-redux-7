@@ -49,7 +49,8 @@ class Inicio extends React.Component {
             id="playButton" data-testid="btn-play" disabled={this.buttonState()}
             onClick={() => {
               getGravatarAvatar(name, email);
-              ResultToken();
+              // ResultToken();
+              // startNemQuestion();
             }}
           >
             Jogar
@@ -76,6 +77,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getGravatarAvatar: (email, name) => dispatch(getGravatarSuccess(email, name)),
+  startNemQuestion: () => dispatch(fechQuestion()),
 });
 
 Inicio.propTypes = {

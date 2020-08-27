@@ -5,6 +5,7 @@ import BotoesResposta from './BotoesResposta';
 export default class CompQuestion extends Component {
   render() {
     const { correct_answer, incorrect_answers, question } = this.props;
+    
     return (
       <div>
         <div>
