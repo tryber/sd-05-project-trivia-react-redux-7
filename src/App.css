@@ -28,7 +28,7 @@
 
 .App-header {
   align-items: center;
-  background-image: url("./Image/conheça-os-5-jogos-mais-vendidos-do-super-nintendo.jpg");
+  background-image: url('./Image/conheça-os-5-jogos-mais-vendidos-do-super-nintendo.jpg');
   color: white;
   display: flex;
   flex-direction: column;
@@ -60,13 +60,51 @@
   }
 }
 
+/* Inicio */
+.campoInicial {
+  background-color: #000c;
+  border-radius: 20px;
+  color: white;
+  margin: 10px;
+  max-width: 600px;
+  min-height: 300px;
+  min-width: 600px;
+  padding: 10px 30px;
+}
+
+.inputInicial {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
+.input {
+  height: 25px;
+  margin: 10px;
+  width: 80%;
+}
+
+.button {
+  border-radius: 15px;
+  font-size: 20px;
+  height: 40px;
+  margin: 10px;
+  width: 200px;
+}
+
+.buttonVerde {
+  background-color: teal;
+  color: white;
+}
+
 /* jogo */
 .jogo {
-  background-color: whitesmoke;
+  background-color: #000c;
   border-radius: 20px;
-  color: black;
-  min-height: 300px;
+  color: white;
+  margin: 10px;
   max-width: 600px;
+  min-height: 300px;
   min-width: 600px;
   padding: 10px 30px;
 }
@@ -76,9 +114,39 @@
   justify-content: space-around;
 }
 
+.campoPergunta {
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  padding: 10px 30px;
+  width: 90%;
+}
+
 /* notFound */
 .notFound {
   font-size: 80px;
   margin-top: 150px;
   text-align: center;
+}
+
+/* feedback */
+.container {
+  background-color: #000c;
+  border-radius: 20px;
+  color: white;
+  margin: 10px;
+  max-width: 600px;
+  min-height: 300px;
+  min-width: 600px;
+  padding: 10px 30px;
+}
+
+.feedbackTitle {
+  font-size: 60px;
+  margin: 20px 0;
+}
+
+.feedbackText {
+  font-size: 40px;
+  margin: 20px 0;
 }

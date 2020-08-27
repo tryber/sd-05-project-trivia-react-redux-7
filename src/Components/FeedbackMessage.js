@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 const Message = (props) => {
   const { message } = props;
-  return <p data-testid="feedback-test">{message}</p>;
+  return <p className="feedbackTitle" data-testid="feedback-test">{message}</p>;
 };
 
 const TotalScore = (props) => (
-  <span data-testid="deedback-total-score">
+  <span className="feedbackText" data-testid="deedback-total-score">
     Um total de <span>{props.score}</span> pontos
   </span>
 );
@@ -21,7 +21,7 @@ class FeedbackMessage extends Component {
     return (
       <div>
         <Message message={messageByScore(wins)} />
-        <span>Você acertou {wins} questões!</span>
+        <span className="feedbackText">Você acertou {wins} questões!</span><br />
         <TotalScore score={'50'} />
       </div>
     );

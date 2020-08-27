@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BotoesResposta from './BotoesResposta';
+import '../App.css'
 
 export default class CompQuestion extends Component {
   render() {
     const { correct_answer, incorrect_answers, question } = this.props;
     return (
       <div>
-        <div>
+        <div className="campoPergunta">
           {question}
         </div>
         <div className="alternativas">

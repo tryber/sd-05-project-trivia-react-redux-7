@@ -1,37 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { changeIndex } from '../Actions';
 
 class BotaoProximo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      indexJogo: 0,
-    };
-  }
-
-  onclickFunction = () => {
-    this.setState({ indexJogo: this.state.indexJogo + 1  });
-    this.props.changeIndex(this.state.indexJogo);
-  }
-
- /*  buttonProximo = () => {
-
-  } */
 
   render() {
     return (
       <div>
-        <button 
+        <button
+          className="button buttonVerde"
           data-testid="btn-next"
-          /* disabled={this.buttonProximo()} */ 
-          onClick={() => this.onclickFunction()}
+          /* disabled={this.buttonProximo()} */
+          onClick={() => this.props.changeIndex()}
         >
           Próxima
         </button>
       </div>
-    )
+    );  
   }
 }
 
@@ -40,7 +26,6 @@ const mapDispathToProps = (dispath) => ({
 });
 
 BotaoProximo.propTypes = {
-  indexJogo: PropTypes.instanceOf(String),
   changeIndex: PropTypes.func.isRequired,
 };
 

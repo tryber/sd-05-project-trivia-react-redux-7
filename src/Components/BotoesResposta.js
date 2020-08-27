@@ -1,23 +1,27 @@
 // referência https://github.com/tryber/sd-03-project-trivia-react-redux-05/pull/10
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 function RespostaCorreta(props) {
   const { stateButton, style, correctText } = props;
   return (
-    <button data-testid={`correct-answer`} className="buttonCorrectAnswer"
-      onClick={() => stateButton()} style={style} type="button">
+    <button
+      data-testid={'correct-answer'} className="buttonCorrectAnswer"
+      onClick={() => stateButton()} style={style} type="button"
+    >
       {correctText}
     </button>
-  )
+  );
 }
 
-function RespostaErrada(props) { 
-  const { stateButton, style, incorrectText, index } = props;  
+function RespostaErrada(props) {
+  const { stateButton, style, incorrectText, index } = props;
   return (
-    <button data-testid={`wrong-answer-${index}`} className="buttonWrongAnswer"
-      onClick={() => stateButton()} style={style} type="button">
+    <button
+      data-testid={`wrong-answer-${index}`} className="buttonWrongAnswer"
+      onClick={() => stateButton()} style={style} type="button"
+    >
       {incorrectText}
     </button>
   );
@@ -29,24 +33,25 @@ class BotoesResposta extends Component {
     this.state = {
       respondido: false,
     };
+    this.shuffle = this.shuffle.bind(this);
   }
 
   stateButton() {
-    this.setState({respondido: true})
+    this.setState({ respondido: true });
   }
 
   styleButton(tipo) {
-    if(this.state.respondido) {
-      if(tipo === "correto") {
+    if (this.state.respondido) {
+      if(tipo === 'correto') {
         return ({ border: '3px solid rgb(6, 240, 15)' });
-        }
-        return ({ border: '3px solid rgb(255, 0, 0)' });
+      }
+      return ({ border: '3px solid rgb(255, 0, 0)' });
     }
     return {};
   }
 
 
-/*   wrongButton = () => { 
+/*   wrongButton = () => {
     const { questions } = this.props;
     const { indexJogo } = this.props;
     const questaoAtual = questions[indexJogo];
@@ -65,22 +70,25 @@ class BotoesResposta extends Component {
   } */
 
   shuffle(optionArray) {
-    let counter = optionArray.length;
+    const counter = optionArray.length;
     let newArray = [];
     // While there are elements in the array
     while (counter > 0) {
-        // Pick a random index
-        let index = Math.floor(Math.random() * counter);
-        
-        // Decrease counter by 1
-        counter--;
-        if (newArray.includes(optionArray[index])) {
-          counter += 1
-        } else {
-          newArray.push(optionArray[index])
-        } 
+      // Pick a random index
+      const index = Math.floor(Math.random() * counter);
+      // Decrease counter by 1
+      counter--;
+      if (newArray.includes(optionArray[index])) {
+        counter += 1
+      } else {
+        newArray.push(optionArray[index])
+      } 
     }
     return newArray;
+  }
+
+  RespostaErrada() {
+    
   }
 
   render() {
@@ -88,9 +96,9 @@ class BotoesResposta extends Component {
     console.log(incorrect_answers)
     return (
       <div>
-        { this.shuffle([ 
+        {/* { this.shuffle([ 
           ...incorrect_answers.map((answar, index) => <RespostaErrada incorrectText={answar} stateButton={() => this.stateButton()} index={index} style={this.styleButton()} />),
-        <RespostaCorreta correctText={correct_answer} stateButton={() => this.stateButton()} style={this.styleButton("correto")} />])}
+        <RespostaCorreta correctText={correct_answer} stateButton={() => this.stateButton()} style={this.styleButton("correto")} />])} */}
       </div>
     )
   }

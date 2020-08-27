@@ -12,5 +12,5 @@ export {
 
 export {
   CHANGEINDEX,
-  changeIndex
-} from './IndexQuestionActions'
+  changeIndex,
+} from './IndexQuestionActions';

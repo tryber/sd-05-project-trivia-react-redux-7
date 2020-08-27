@@ -35,33 +35,31 @@ class Inicio extends React.Component {
 
   render() {
     const { name, email } = this.state;
-    const { login, getGravatarAvatar, startNemQuestion } = this.props;
+    const { login, getGravatarAvatar } = this.props;
     return (
-      <div>
-        <NameInput
-          onChange={(event) => this.handleChange(event)}
-        />
-        <EmailInput
-          onChange={(event) => this.handleChange(event)}
-        />
+      <div className="campoInicial">
+        <div className="inputInicial">
+          <NameInput onChange={(event) => this.handleChange(event)} />
+          <EmailInput onChange={(event) => this.handleChange(event)} />
+        </div>
+        <Link to="/config">  
+        <button
+          id="settings" data-testid="btn-settings" disabled={this.buttonState()}
+          className="button" onClick={() => login(name, email)}
+        >
+          Configurações
+        </button>
+        </Link>
         <Link to="/jogo">
           <button
             id="playButton" data-testid="btn-play" disabled={this.buttonState()}
-            onClick={() => {
+            className="button" onClick={() => {
               getGravatarAvatar(name, email);
               ResultToken();
             }}
           >
             Jogar
           </button>
-        </Link>
-        <Link to="/config">
-        <button
-          id="settings" data-testid="btn-settings" disabled={this.buttonState()}
-          onClick={() => login(name, email)}
-        >
-          Configurações
-        </button>
         </Link>
       </div>
     );

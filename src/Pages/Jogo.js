@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import CompQuestion from '../Components/CompQuestion';
 import CompCategory from '../Components/CompCategory';
 import { fechQuestion } from '../Actions';
-import BotoesResposta from '../Components/BotoesResposta';
 import BotaoProximo from '../Components/BotaoProximo';
 import '../App.css';
 
@@ -17,10 +16,7 @@ class Jogo extends Component {
 
   render() {
     const { login, questions, indexJogo, isFetching } = this.props;
-
     if(!isFetching) {
-      const actualQuestion = questions[indexJogo];
-      console.log(questions);
     return (
       <div className="jogo">
         <header className="header-jogo">
@@ -31,7 +27,7 @@ class Jogo extends Component {
         <div>
           <div className="pergunta">
             <div className="category" data-testid="question-category"><CompCategory /></div>
-            <div className="question" data-testid="question-text"><CompQuestion question={actualQuestion.question} correct_aswer={actualQuestion.correct_aswer} incorrect_answers={actualQuestion.incorrect_answers}/></div>
+            <div className="question" data-testid="question-text"><CompQuestion {...questions[indexJogo]}/></div>
             <div>{'Tempo: 30s'}</div>
           </div>
           <BotaoProximo />

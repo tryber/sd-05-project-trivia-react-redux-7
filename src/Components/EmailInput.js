@@ -6,7 +6,7 @@ const EmailInput = (props) => {
   return (
     <label htmlFor="email">
       E-mail
-      <input name="email" type="text" data-testid="input-gravatar-email" onChange={onChange} />
+      <input className="input"  name="email" type="text" data-testid="input-gravatar-email" onChange={onChange} />
     </label>
   );
 };

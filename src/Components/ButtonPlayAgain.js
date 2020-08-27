@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ButtonPlayAgain.css';
+import "../App.css"
 
 const PlayAgain = () => (
-  <Link to="/" data-testid="btn-play-again" className="button-play-again">
-    Jogar novamente
+  <Link to="/" data-testid="btn-play-again">
+    <button className="button buttonVerde">
+      Jogar novamente
+    </button>
   </Link>
 );
 

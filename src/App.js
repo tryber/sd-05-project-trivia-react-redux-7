@@ -14,9 +14,6 @@ export default function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p className="suaVez">
-          SUA VEZ
-        </p>
         <Switch>
           <Route path="/config" component={Config} />
           <Route path="/jogo" component={Jogo} />

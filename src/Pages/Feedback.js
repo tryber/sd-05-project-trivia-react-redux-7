@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import FeedbackMessage from '../Components/FeedbackMessage';
 import ButtonRanking from '../Components/ButtonRanking';
 import PlayAgain from '../Components/ButtonPlayAgain';
+import '../App.css';
 
 class Feedback extends Component {
   render() {
