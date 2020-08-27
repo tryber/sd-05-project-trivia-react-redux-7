@@ -4,6 +4,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getGravatarSuccess } from '../Actions';
+import EmailInput from '../Components/EmailInput';
+import NameInput from '../Components/NameInput';
+import { fechQuestion } from '../Actions';
+import { ResultToken } from '../Services/API';
 
 class Inicio extends React.Component {
   constructor(props) {
@@ -13,8 +19,7 @@ class Inicio extends React.Component {
       email: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.botao = this.botao.bind(this);
+    this.buttonState = this.buttonState.bind(this);
   }
 
   handleChange(event) {
@@ -22,55 +27,60 @@ class Inicio extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleEmail(event) {
-    const { email, value } = event.target;
-    this.setState({ [email]: value });
-  }
-
-  botao() {
+  buttonState() {
     const { name, email } = this.state;
-    if (!email || !name) return true;
+    if (email === '' || name === '') return true;
     return false;
   }
 
   render() {
     const { name, email } = this.state;
-    const { login } = this.props;
+    const { login, getGravatarAvatar, startNemQuestion } = this.props;
     return (
       <div>
-        <label htmlFor="name">Name</label>
-        <input
-          name="jogador"
-          type="text"
-          data-testid="input-player-name"
+        <NameInput
           onChange={(event) => this.handleChange(event)}
         />
-        <label htmlFor="email">Email</label>
-        <input
-          name="login"
-          type="email"
-          data-testid="input-gravatar-email"
-          onChange={(event) => this.handleEmail(event)}
+        <EmailInput
+          onChange={(event) => this.handleChange(event)}
         />
-        <Link to="/Jogo">
-          <button id="playButton" data-testid="btn-play">Jogar</button>
+        <Link to="/jogo">
+          <button
+            id="playButton" data-testid="btn-play" disabled={this.buttonState()}
+            onClick={() => {
+              getGravatarAvatar(name, email);
+              ResultToken();
+            }}
+          >
+            Jogar
+          </button>
         </Link>
+        <Link to="/config">
         <button
-          id="settings"
-          data-testid="btn-settings"
-          disable={this.botao()}
+          id="settings" data-testid="btn-settings" disabled={this.buttonState()}
           onClick={() => login(name, email)}
-        >Configurações</button>
-        <Link to="/Config">
-          <button data-tesid="btn-settings">Configurações</button>
+        >
+          Configurações
+        </button>
         </Link>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  isLogged: state.loginReducer.isLogged,
+  name: state.loginReducer.name,
+  email: state.loginReducer.email,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getGravatarAvatar: (email, name) => dispatch(getGravatarSuccess(email, name)),
+});
+
 Inicio.propTypes = {
   login: PropTypes.string.isRequired,
+  getGravatarAvatar: PropTypes.func.isRequired,
 };
 
-export default Inicio;
+export default connect(mapStateToProps, mapDispatchToProps)(Inicio);

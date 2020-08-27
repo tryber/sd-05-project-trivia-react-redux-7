@@ -16,35 +16,47 @@ class Jogo extends Component {
   }
 
   render() {
+    const { login, questions, indexJogo, isFetching } = this.props;
+
+    if(!isFetching) {
+      const actualQuestion = questions[indexJogo];
+      console.log(questions);
     return (
       <div className="jogo">
         <header className="header-jogo">
-          <img src="." alt="foto" data-testid="header-profile-picture" />
-          <h2 data-testid="header-player-name">{'Jogador: name'}</h2>
+          <img src={login.gravatarLink} alt="foto" data-testid="header-profile-picture" />
+          <h2 data-testid="header-player-name">{`Jogador: ${login.name}`}</h2>
           <h6 data-testid="header-score">{'Nota: 0'}</h6>
         </header>
         <div>
           <div className="pergunta">
             <div className="category" data-testid="question-category"><CompCategory /></div>
-            <div className="question" data-testid="question-text"><CompQuestion /></div>
+            <div className="question" data-testid="question-text"><CompQuestion question={actualQuestion.question} correct_aswer={actualQuestion.correct_aswer} incorrect_answers={actualQuestion.incorrect_answers}/></div>
             <div>{'Tempo: 30s'}</div>
-          </div>
-          <div className="alternativas">
-            <BotoesResposta />
           </div>
           <BotaoProximo />
         </div>
       </div>
     );
+    }
+    return (
+      <div>
+        Carregando...  
+      </div>
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
+  ...state.loginReducer,
   questions: state.questionReducer.questions,
+  isFetching: state.questionReducer.isFetching,
+  indexJogo: state.indexJogoReducer.indexJogo,
+  login: state.loginReducer,
 });
 
-const mapDispathToProps = (dispath) => ({
-  startNemQuestion: () => dispath(fechQuestion()),
+const mapDispathToProps = (dispatch) => ({
+  startNemQuestion: () => dispatch(fechQuestion()),
 });
 
 Jogo.propTypes = {

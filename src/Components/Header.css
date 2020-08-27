@@ -1,0 +1,35 @@
+.header {
+  align-items: center;
+  border: 1px solid black;
+  display: inline-flex;
+  height: 70px;
+  justify-content: space-around;
+  left: 0;
+  padding: 0 5px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.nickName {
+  font-size: 26px;
+  font-style: normal;
+  line-height: 30px;
+}
+
+.imgStyle {
+  border: 1px solid black;
+  height: 50px;
+  margin: 0 5px 0 0;
+}
+
+.scoreStyle {
+  font-size: 30px;
+  font-style: normal;
+  line-height: 30px;
+}
+
+.player-avatar {
+  align-items: center;
+  display: inline-flex;
+}

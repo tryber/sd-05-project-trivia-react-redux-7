@@ -1,37 +1,24 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import BotoesResposta from './BotoesResposta';
 
-class CompQuestion extends Component {
-
-  questionIndex = () => {
-    const { questions } = this.props;
-    if (questions.length > 0) {
-      const { indexJogo } = this.props;
-      return (
-        <div>
-          {(questions.map(questao => questao.question)[indexJogo])}
-        </div>
-      );
-    }
-  };
-
+export default class CompQuestion extends Component {
   render() {
+    const { correct_answer, incorrect_answers, question } = this.props;
     return (
       <div>
-        {this.questionIndex()}
+        <div>
+          {question}
+        </div>
+        <div className="alternativas">
+          <BotoesResposta correct_answer={correct_answer} incorrect_answers={incorrect_answers}/>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  questions: state.questionReducer.questions,
-  indexJogo: state.indexJogoReducer.indexJogo,
-});
 
-CompQuestion.propTypes = {
+/* CompQuestion.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.instanceOf(Object)),
-};
-
-export default connect(mapStateToProps)(CompQuestion);
+}; */

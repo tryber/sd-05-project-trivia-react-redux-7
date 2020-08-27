@@ -6,6 +6,7 @@ import Jogo from './Pages/Jogo';
 import Feedback from './Pages/Feedback';
 import Ranking from './Pages/Ranking';
 import NotFound from './Pages/NotFound';
+import Config from './Pages/Config';
 import './App.css';
 
 export default function App() {
@@ -17,11 +18,12 @@ export default function App() {
           SUA VEZ
         </p>
         <Switch>
-          <Route path="/ranking" component={Ranking} />
+          <Route path="/config" component={Config} />
           <Route path="/jogo" component={Jogo} />
+          <Route path="/ranking" component={Ranking} />
           <Route path="/feedback" component={Feedback} />
+          <Route path="/:error" component={NotFound} />
           <Route exact path="/" component={Inicio} />
-          <Route component={NotFound} />
         </Switch>
       </header>
     </div>

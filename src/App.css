@@ -28,7 +28,7 @@
 
 .App-header {
   align-items: center;
-  background-color: #282c34;
+  background-image: url("./Image/conheça-os-5-jogos-mais-vendidos-do-super-nintendo.jpg");
   color: white;
   display: flex;
   flex-direction: column;
@@ -74,16 +74,6 @@
 .header-jogo {
   display: flex;
   justify-content: space-around;
-}
-
-.button-correct-answer {
-  background-color: #888;
-  border: 3px solid rgb(6, 240, 15);
-}
-
-.button-wrong-answer {
-  background-color: #888;
-  border: 3px solid rgb(255, 0, 0);
 }
 
 /* notFound */

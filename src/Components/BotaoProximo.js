@@ -16,10 +16,18 @@ class BotaoProximo extends Component {
     this.props.changeIndex(this.state.indexJogo);
   }
 
+ /*  buttonProximo = () => {
+
+  } */
+
   render() {
     return (
       <div>
-        <button data-testid="btn-next" onClick={() => this.onclickFunction()}>
+        <button 
+          data-testid="btn-next"
+          /* disabled={this.buttonProximo()} */ 
+          onClick={() => this.onclickFunction()}
+        >
           Próxima
         </button>
       </div>
