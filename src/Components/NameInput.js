@@ -8,7 +8,7 @@ const NameInput = (props) => {
       Name
       <input
         className="input" name="name" type="text"
-        data-testid="input-palyer-name" onChange={onChange}
+        data-testid="input-player-name" onChange={onChange}
       />
     </label>
   );

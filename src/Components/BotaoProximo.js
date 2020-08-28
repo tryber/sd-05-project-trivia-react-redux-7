@@ -12,7 +12,11 @@ class BotaoProximo extends Component {
           className="button buttonVerde"
           data-testid="btn-next"
           /* disabled={this.buttonProximo()} */
-          onClick={() => this.props.changeIndex()}
+          onClick={() => {
+            this.props.changeIndex();
+            
+            }
+          }
         >
           Próxima
         </button>
