@@ -35,7 +35,7 @@ class Inicio extends React.Component {
 
   render() {
     const { name, email } = this.state;
-    const { login, getGravatarAvatar } = this.props;
+    const { /* login, */ getGravatarAvatar } = this.props;
     return (
       <div className="campoInicial">
         <div className="inputInicial">
@@ -45,7 +45,7 @@ class Inicio extends React.Component {
         <Link to="/config">
           <button
             id="settings" data-testid="btn-settings" disabled={this.buttonState()}
-            className="button"
+            className="button" /* onClick={() => login(name, email)} */
           >
             Configurações
           </button>
@@ -78,7 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Inicio.propTypes = {
-  login: PropTypes.string.isRequired,
+  /* login: PropTypes.string.isRequired, */
   getGravatarAvatar: PropTypes.func.isRequired,
 };
 
