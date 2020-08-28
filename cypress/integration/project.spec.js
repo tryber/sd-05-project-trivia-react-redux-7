@@ -40,7 +40,7 @@ const BUTTON_PLAY_AGAIN_SELECTOR = '[data-testid="btn-play-again"]';
 
 // game
 
-describe.only('O _header_ deve conter as informações da pessoa jogadora', () => {
+describe('O _header_ deve conter as informações da pessoa jogadora', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
     cy.clearLocalStorage();
