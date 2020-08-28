@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BotoesResposta from './BotoesResposta';
-import '../App.css'
+import '../App.css';
 
 export default class CompQuestion extends Component {
   render() {
-    const { correct_answer, incorrect_answers, question } = this.props;
     return (
       <div>
         <div className="campoPergunta">
-          {question}
+          {this.props.question}
         </div>
         <div className="alternativas">
-          <BotoesResposta correct_answer={correct_answer} incorrect_answers={incorrect_answers}/>
+          <BotoesResposta
+            correctAnswer={this.props.correct_answer}
+            incorrectAnswers={this.props.incorrect_answers}
+          />
         </div>
       </div>
     );
@@ -20,6 +22,8 @@ export default class CompQuestion extends Component {
 }
 
 
-/* CompQuestion.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.instanceOf(Object)),
-}; */
+CompQuestion.propTypes = {
+  question: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
+  incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  correct_answer: PropTypes.string.isRequired,
+};

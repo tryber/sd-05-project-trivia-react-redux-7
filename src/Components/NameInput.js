@@ -6,7 +6,10 @@ const NameInput = (props) => {
   return (
     <label htmlFor="email">
       Name
-      <input className="input" name="name" type="text" data-testid="input-palyer-name" onChange={onChange} />
+      <input
+        className="input" name="name" type="text"
+        data-testid="input-palyer-name" onChange={onChange}
+      />
     </label>
   );
 };

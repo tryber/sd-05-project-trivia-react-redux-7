@@ -17,7 +17,7 @@ class BotaoProximo extends Component {
           Próxima
         </button>
       </div>
-    );  
+    );
   }
 }
 

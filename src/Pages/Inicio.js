@@ -42,13 +42,13 @@ class Inicio extends React.Component {
           <NameInput onChange={(event) => this.handleChange(event)} />
           <EmailInput onChange={(event) => this.handleChange(event)} />
         </div>
-        <Link to="/config">  
-        <button
-          id="settings" data-testid="btn-settings" disabled={this.buttonState()}
-          className="button" onClick={() => login(name, email)}
-        >
-          Configurações
-        </button>
+        <Link to="/config">
+          <button
+            id="settings" data-testid="btn-settings" disabled={this.buttonState()}
+            className="button" onClick={() => login(name, email)}
+          >
+            Configurações
+          </button>
         </Link>
         <Link to="/jogo">
           <button
@@ -74,6 +74,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getGravatarAvatar: (email, name) => dispatch(getGravatarSuccess(email, name)),
+  startNemQuestion: () => dispatch(fechQuestion()),
 });
 
 Inicio.propTypes = {

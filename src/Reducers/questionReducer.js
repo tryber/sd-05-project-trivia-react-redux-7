@@ -1,8 +1,8 @@
 import { START_NEW_QUESTION, START_NEW_QUESTION_FAILURE, START_NEW_QUESTION_SUCCESS } from '../Actions';
 
 const INITIALSTATE = {
-  isFetching: false,
-  questions: 0,
+  isFetching: true,
+  questions: [],
 };
 
 const questionReducer = (state = INITIALSTATE, action) => {
