@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Header from '../Components/Header';
 import FeedbackMessage from '../Components/FeedbackMessage';
 import ButtonRanking from '../Components/ButtonRanking';
 import PlayAgain from '../Components/ButtonPlayAgain';
+import '../App.css';
 
-export default class feedback extends Component {
+class Feedback extends Component {
   render() {
     return (
       <div className="container">
-        <Header
-          imagePath="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"
-          player="Jogador Qualquer"
-          score="20"
-        />
+        <Header score="20" />
         <FeedbackMessage wins={3} />
         <ButtonRanking />
         <PlayAgain />
@@ -20,3 +18,17 @@ export default class feedback extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const {
+    loginReducer: { isLogged, gravatarLink, name, email },
+  } = state;
+  return {
+    isLogged,
+    gravatarLink,
+    name,
+    email,
+  };
+};
+
+export default connect(mapStateToProps)(Feedback);

@@ -6,27 +6,21 @@ import Jogo from './Pages/Jogo';
 import Feedback from './Pages/Feedback';
 import Ranking from './Pages/Ranking';
 import NotFound from './Pages/NotFound';
+import Config from './Pages/Config';
 import './App.css';
-// import Inicio from './Pages/Inicio';
-// import Jogo from './Pages/Jogo';
-// import Feedback from './Pages/Feedback';
-// import Ranking from './Pages/ranking';
-// import NotFound from './Pages/NotFound';
 
 export default function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p className="suaVez">
-          SUA VEZ
-        </p>
         <Switch>
-          <Route path="/ranking" component={Ranking} />
+          <Route path="/config" component={Config} />
           <Route path="/jogo" component={Jogo} />
+          <Route path="/ranking" component={Ranking} />
           <Route path="/feedback" component={Feedback} />
-          <Route exact path="/" component={Inicio} />
           <Route path="/:error" component={NotFound} />
+          <Route exact path="/" component={Inicio} />
         </Switch>
       </header>
     </div>

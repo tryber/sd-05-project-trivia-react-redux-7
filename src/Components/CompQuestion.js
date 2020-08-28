@@ -1,43 +1,29 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import BotoesResposta from './BotoesResposta';
+import '../App.css';
 
-class CompQuestion extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      index: 0,
-    };
-  }
-
+export default class CompQuestion extends Component {
   render() {
-    const { questions } = this.props;
-    console.log(questions);
-    const { index } = this.state;
-    console.log(index);
-/*     questionIndex = () => {
-      return (
-        <div>
-        .
-          {console.log(questions)},
-        </div>
-      );
-    }; */
     return (
       <div>
-        {/* {this.questionIndex()} */}
-        .this.questionIndex
+        <div className="campoPergunta">
+          {this.props.question}
+        </div>
+        <div className="alternativas">
+          <BotoesResposta
+            correctAnswer={this.props.correct_answer}
+            incorrectAnswers={this.props.incorrect_answers}
+          />
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  questions: state.questionReducer.questions,
-});
 
 CompQuestion.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
+  question: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
+  incorrect_answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  correct_answer: PropTypes.string.isRequired,
 };
-
-export default connect(mapStateToProps)(CompQuestion);
