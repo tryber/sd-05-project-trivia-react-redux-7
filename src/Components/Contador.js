@@ -1,34 +1,45 @@
-/* import React from 'react';
-import ReactDOM from 'react-dom';
+// timer só está fazendo a contagem regressiva e resetando
+// quando o tempo acaba
+import React from 'react';
 
 class Contador extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-        currentTime: 30
+        timer: 30
       }
     }
 
-    tempo() {
-      this.setState((prevState, props) => ({
-        currentTime: prevState.currentTime - 1;
-      }));
+    // chama o timer na tela quando carrega
+    componentDidMount() {
+      this.tempo();
     }
 
-    componentDidMount(){
-      this.timerID = setInterval((prevState, props) => this.tempo(),1000);
+    // atualiza o timer e reseta quando acaba
+    componentDidUpdate() {
+      const { timer } = this.state;
+      if (timer === 0) {
+        clearInterval(this.inicioTempo);
+      }
+    }
+
+    // vai diminuindo de 1 em 1 s
+    tempo() {
+      this.inicioTempo = setInterval(() => {
+        this.setState(({ timer }) => ({
+        timer: timer - 1,
+        }))
+      }1000);
     }
 
     render() {
+      const { timer } = this.state;
       return (
         <div>
-          <h1>Tempo restante {this.state.currentTime}</h1>
+          <h1>Tempo restante {timer}</h1>
         </div>
       );
     }
   }
 
-  ReactDOM.render(
-    <Contador />,
-  );
- */
+ export default Contador;
