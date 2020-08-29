@@ -7,7 +7,11 @@ export {
 
 export {
   GET_GRAVATAR_SUCCESS,
+  SETSCORE,
+  SETASSERTIONS,
   getGravatarSuccess,
+  setScore,
+  setAssertions,
 } from './LoginActions';
 
 export {
