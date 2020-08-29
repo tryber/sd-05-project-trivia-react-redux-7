@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { changeIndex, resetAnswer } from '../Actions';
 
 class BotaoProximo extends Component {
+ 
   render() {
-    const { disabled, handleClick, indexChange, resetingAnswer } = this.props;
+    const { disabled, handleClick, indexChange, resetingAnswer, respondido } = this.props;
     return (
       <div>
         <button
-          className="button"
+          className={respondido ? "button" : "buttonNull"}
           data-testid="btn-next"
           disabled={disabled}
           onClick={() => {
@@ -25,9 +26,13 @@ class BotaoProximo extends Component {
   }
 }
 
-const mapDispathToProps = (dispath) => ({
-  indexChange: (indexJogo) => dispath(changeIndex(indexJogo)),
-  resetingAnswer: () => dispath(resetAnswer()),
+const mapStateToProps = (state) => ({
+  respondido: state.answerReducer.respondido,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  indexChange: (indexJogo) => dispatch(changeIndex(indexJogo)),
+  resetingAnswer: () => dispatch(resetAnswer()),
 });
 
 BotaoProximo.propTypes = {
@@ -35,6 +40,7 @@ BotaoProximo.propTypes = {
   handleClick: PropTypes.func.isRequired,
   indexChange: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
+  respondido: PropTypes.bool.isRequired,
 };
 
-export default connect(null, mapDispathToProps)(BotaoProximo);
+export default connect(mapStateToProps, mapDispatchToProps)(BotaoProximo);
