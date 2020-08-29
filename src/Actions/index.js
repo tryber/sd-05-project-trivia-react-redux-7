@@ -7,10 +7,13 @@ export {
 
 export {
   GET_GRAVATAR_SUCCESS,
+  SETSCORE,
+  SETASSERTIONS,
   getGravatarSuccess,
+  setScore,
+  setAssertions,
 } from './LoginActions';
 
-export {
-  CHANGEINDEX,
-  changeIndex,
-} from './IndexQuestionActions';
+export { CHANGEINDEX, changeIndex } from './IndexQuestionActions';
+
+export { CHOOSE_ANSWER, RESET_ANSWER, chooseAnswer, resetAnswer } from './answerActions';

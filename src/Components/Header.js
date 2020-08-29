@@ -20,7 +20,7 @@ class Header extends Component {
           </p>
         </div>
         <p className="scoreStyle" data-testid="header-score">
-          Pontos: {score || 0}
+          Pontos: {score}
         </p>
       </header>
     );
@@ -29,11 +29,14 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   const {
-    loginReducer: { gravatarLink, name },
+    loginReducer: { gravatarLink, name, score, assertions },
   } = state;
+
   return {
     gravatarLink,
     name,
+    score,
+    assertions,
   };
 };
 

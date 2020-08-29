@@ -1,6 +1,8 @@
 import { MD5 } from 'crypto-js';
 // import login from '../Services/ApiGravatar';
 export const GET_GRAVATAR_SUCCESS = 'GET_GRAVATAR_SUCCESS';
+export const SETSCORE = 'SETSCORE';
+export const SETASSERTIONS = 'SETASSERTIONS';
 const API = 'https://www.gravatar.com/avatar/';
 
 export const getGravatarSuccess = (name, email) => ({
@@ -8,4 +10,12 @@ export const getGravatarSuccess = (name, email) => ({
   gravatarLink: `${API}${MD5(email.toLowerCase())}`,
   name,
   email,
+});
+
+export const setScore = () => ({
+  type: SETSCORE,
+});
+
+export const setAssertions = () => ({
+  type: SETASSERTIONS,
 });
