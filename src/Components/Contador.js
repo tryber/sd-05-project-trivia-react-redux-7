@@ -29,8 +29,8 @@ class Contador extends React.Component {
         this.setState(({ timer }) => ({
         timer: timer - 1,
         }))
-      }1000);
-    }
+      }
+      1000)};
 
     render() {
       const { timer } = this.state;
