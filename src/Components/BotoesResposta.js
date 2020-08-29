@@ -67,11 +67,6 @@ class BotoesResposta extends Component {
           setingAssertions();
           if (!respondido) {
             handleClick();
-<<<<<<< HEAD
-=======
-            console.log(assertions, score);
-            // saveToLocalStorage(name, assertions +1 , score + 10 , gravatarEmail);
->>>>>>> 7272cfab319d7e09a2adb6458b046c930e086f3e
           }
         }}
         disabled={respondido}

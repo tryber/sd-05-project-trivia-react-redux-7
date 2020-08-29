@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const buttonHome = ({ name, assertions, score, gravatarEmail }) => (
+const buttonHome = () => (
   <Link
     to="/pages/Inicio"
     datatest-id="btn-go-home"
