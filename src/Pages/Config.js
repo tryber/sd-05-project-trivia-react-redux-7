@@ -3,7 +3,7 @@ import '../App.css';
 
 class Config extends Component {
   render() {
-    return <h1 datatest-id="settings-title">Configurações</h1>;
+    return <h1 data-testid="settings-title">Configurações</h1>;
   }
 }
 

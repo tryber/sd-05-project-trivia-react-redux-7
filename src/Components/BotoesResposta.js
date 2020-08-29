@@ -66,11 +66,15 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha a key question com a string
     da resposta correta */
     const { question } = props;
+    const { handleClick } = this.props;
     return (
       <button
         data-testid={'correct-answer'}
         className="buttonCorrectAnswer"
-        onClick={() => this.stateButton()}
+        onClick={() => {
+          this.stateButton();
+          handleClick();
+        }}
         style={this.styleButton('correto')}
         type="button"
       >
@@ -84,11 +88,15 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha as keys question (com a string da resposta)
     idx, que é o indice da respostar */
     const { question, idx } = props;
+    const { handleClick } = this.props;
     return (
       <button
         data-testid={`wrong-answer-${idx}`}
         className="buttonWrongAnswer"
-        onClick={() => this.stateButton()}
+        onClick={() => {
+          this.stateButton();
+          handleClick();
+        }}
         style={this.styleButton()}
         type="button"
       >
@@ -113,6 +121,7 @@ class BotoesResposta extends Component {
 BotoesResposta.propTypes = {
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string).isRequired,
   correctAnswer: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default BotoesResposta;

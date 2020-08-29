@@ -31,4 +31,4 @@ class Contador extends React.Component {
   ReactDOM.render(
     <Contador />,
   );
-*/
+ */

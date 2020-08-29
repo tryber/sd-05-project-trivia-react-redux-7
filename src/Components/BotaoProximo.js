@@ -6,12 +6,13 @@ import { changeIndex } from '../Actions';
 class BotaoProximo extends Component {
 
   render() {
+    const { disabled } = this.props;
     return (
       <div>
         <button
-          className="button buttonVerde"
+          className="button"
           data-testid="btn-next"
-          /* disabled={this.buttonProximo()} */
+          disabled={disabled}
           onClick={() =>
             this.props.changeIndex()
           }
@@ -29,6 +30,7 @@ const mapDispathToProps = (dispath) => ({
 
 BotaoProximo.propTypes = {
   changeIndex: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default connect(null, mapDispathToProps)(BotaoProximo);
