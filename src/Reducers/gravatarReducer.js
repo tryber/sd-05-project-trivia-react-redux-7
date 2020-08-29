@@ -22,23 +22,14 @@ const loginReducer = (state = INITIAL_STATE, action) => {
         ...state,
         score: state.score + 10,
       };
-<<<<<<< HEAD
     case SETASSERTIONS: {
-=======
-    case SETASSERTIONS:
->>>>>>> 7272cfab319d7e09a2adb6458b046c930e086f3e
       const newState = {
         ...state,
         assertions: state.assertions + 1,
       };
-<<<<<<< HEAD
       saveToLocalStorage(newState.name, newState.assertions, newState.score, newState.email);
       return newState;
     }
-=======
-      saveToLocalStorage(newState.name, newState.assertions, newState.score , newState.email)
-      return newState;
->>>>>>> 7272cfab319d7e09a2adb6458b046c930e086f3e
     default:
       return state;
   }
