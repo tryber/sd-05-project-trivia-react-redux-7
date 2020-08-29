@@ -39,8 +39,8 @@ class Contador extends React.Component {
       this.inicioTempo = setInterval(() => {
         this.setState(({ timer }) => ({
           timer: timer - 1,
-      }));
-    }, 1000);
+        }));
+      }, 1000);
     }
     return this.setState({ timer: 30 });
   }
