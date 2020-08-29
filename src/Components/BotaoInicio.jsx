@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import saveToLocalStorage from '../Services/saveToLocalStorage';
 
-const buttonHome = ({name, assertions, score, gravatarEmail}) => (
-  <Link 
+const buttonHome = ({ name, assertions, score, gravatarEmail }) => (
+  <Link
     to="/pages/Inicio"
     datatest-id="btn-go-home"
-    onClick={
-      saveToLocalStorage(name, assertions, score, gravatarEmail)
-    }
-  >Voltar à Página Inicial
+    onClick={saveToLocalStorage(name, assertions, score, gravatarEmail)}
+  >
+    Voltar à Página Inicial
   </Link>
 );
 

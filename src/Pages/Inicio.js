@@ -44,13 +44,11 @@ class Inicio extends React.Component {
           <EmailInput onChange={(event) => this.handleChange(event)} />
         </div>
         <Link to="/config">
-          <button
-            id="settings" data-testid="btn-settings" className="button"
-          >
+          <button id="settings" data-testid="btn-settings" className="button">
             Configurações
           </button>
         </Link>
-        <BotaoJogar 
+        <BotaoJogar
           name={name}
           email={email}
           buttonState={this.buttonState()}
