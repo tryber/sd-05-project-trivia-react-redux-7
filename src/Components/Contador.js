@@ -1,5 +1,7 @@
 // timer só está fazendo a contagem regressiva e resetando
 // quando o tempo acaba
+// https://medium.com/@650egor/
+// react-30-day-challenge-day-1-simple-timer-df85d0867553
 import React from 'react';
 
 class Contador extends React.Component {
