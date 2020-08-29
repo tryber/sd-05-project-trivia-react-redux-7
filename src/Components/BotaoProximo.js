@@ -33,7 +33,7 @@ const mapDispathToProps = (dispath) => ({
 BotaoProximo.propTypes = {
   disabled: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
-  changeIndex: PropTypes.func.isRequired,
+  indexChange: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
 };
 
