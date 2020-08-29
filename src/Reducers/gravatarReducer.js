@@ -1,4 +1,5 @@
 import { GET_GRAVATAR_SUCCESS, SETSCORE, SETASSERTIONS } from '../Actions';
+import saveToLocalStorage from '../Services/saveToLocalStorage';
 
 const INITIAL_STATE = {
   isLogged: false,
@@ -21,11 +22,14 @@ const loginReducer = (state = INITIAL_STATE, action) => {
         ...state,
         score: state.score + 10,
       };
-    case SETASSERTIONS:
-      return {
+    case SETASSERTIONS: {
+      const newState = {
         ...state,
         assertions: state.assertions + 1,
       };
+      saveToLocalStorage(newState.name, newState.assertions, newState.score, newState.email);
+      return newState;
+    }
     default:
       return state;
   }

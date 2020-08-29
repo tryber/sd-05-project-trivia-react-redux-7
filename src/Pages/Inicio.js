@@ -50,7 +50,7 @@ class Inicio extends React.Component {
             Configurações
           </button>
         </Link>
-        <BotaoJogar 
+        <BotaoJogar
           name={name}
           email={email}
           buttonState={this.buttonState()}
