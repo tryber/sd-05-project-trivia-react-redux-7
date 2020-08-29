@@ -56,14 +56,14 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha a key question com a string
     da resposta correta */
     const { question } = props;
-    const { handleClick, chooseAnswer, respondido } = this.props;
+    const { handleClick, choosingAnswer, respondido } = this.props;
     return (
       <button
         data-testid={'correct-answer'}
         className="buttonCorrectAnswer"
         onClick={() => {
-          chooseAnswer();
-          respondido||handleClick();
+          choosingAnswer();
+          if (!respondido) handleClick();
         }}
         disabled={respondido}
         style={this.styleButton('correto')}
@@ -79,15 +79,15 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha as keys question (com a string da resposta)
     idx, que é o indice da respostar */
     const { question, idx } = props;
-    const { handleClick, chooseAnswer, respondido } = this.props;
+    const { handleClick, choosingAnswer, respondido } = this.props;
     return (
       <button
         data-testid={`wrong-answer-${idx}`}
         className="buttonWrongAnswer"
         disabled={respondido}
         onClick={() => {
-          chooseAnswer();
-          respondido||handleClick();
+          choosingAnswer();
+          if (!respondido) handleClick();
         }}
         style={this.styleButton()}
         type="button"
@@ -115,7 +115,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  chooseAnswer: () => dispatch(chooseAnswer()),
+  choosingAnswer: () => dispatch(chooseAnswer()),
 });
 
 BotoesResposta.propTypes = {
@@ -123,7 +123,7 @@ BotoesResposta.propTypes = {
   correctAnswer: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
-  chooseAnswer: PropTypes.func.isRequired,
+  choosingAnswer: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BotoesResposta);

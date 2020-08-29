@@ -5,7 +5,7 @@ import { changeIndex, resetAnswer } from '../Actions';
 
 class BotaoProximo extends Component {
   render() {
-    const { disabled, handleClick, changeIndex, resetAnswer } = this.props;
+    const { disabled, handleClick, indexChange, resetingAnswer } = this.props;
     return (
       <div>
         <button
@@ -13,8 +13,8 @@ class BotaoProximo extends Component {
           data-testid="btn-next"
           disabled={disabled}
           onClick={() => {
-            resetAnswer();
-            changeIndex();
+            resetingAnswer();
+            indexChange();
             handleClick();
           }}
         >
@@ -26,14 +26,15 @@ class BotaoProximo extends Component {
 }
 
 const mapDispathToProps = (dispath) => ({
-  changeIndex: (indexJogo) => dispath(changeIndex(indexJogo)),
-  resetAnswer: () => dispath(resetAnswer()),
+  indexChange: (indexJogo) => dispath(changeIndex(indexJogo)),
+  resetingAnswer: () => dispath(resetAnswer()),
 });
 
 BotaoProximo.propTypes = {
-  changeIndex: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
+  changeIndex: PropTypes.func.isRequired,
+  resetingAnswer: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispathToProps)(BotaoProximo);
