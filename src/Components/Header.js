@@ -19,8 +19,8 @@ class Header extends Component {
             Jogador: {name}
           </p>
         </div>
-        <p className="scoreStyle" data-testid="header-player-score">
-          Pontos: {score}
+        <p className="scoreStyle" data-testid="header-score">
+          Pontos: {score || 0}
         </p>
       </header>
     );
@@ -31,6 +31,7 @@ const mapStateToProps = (state) => {
   const {
     loginReducer: { gravatarLink, name },
   } = state;
+  
   return {
     gravatarLink,
     name,
