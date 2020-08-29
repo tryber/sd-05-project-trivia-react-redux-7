@@ -7,6 +7,7 @@ import { fechQuestion } from '../Actions';
 import BotaoProximo from '../Components/BotaoProximo';
 import '../App.css';
 import Header from '../Components/Header';
+import Contador from '../Components/Contador';
 
 class Jogo extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Jogo extends Component {
                   handleClick={this.finishQuestion}
                 />
               </div>
-              <div>{'Tempo: 30s'}</div>
+              <div><Contador /></div>
             </div>
             <BotaoProximo disabled={disabled} />
           </div>
