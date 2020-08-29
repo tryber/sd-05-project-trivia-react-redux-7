@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { changeIndex, resetAnswer } from '../Actions';
 
 function ButtonNext(props) {
-  const { disabled, handleClick, indexChange, resetingAnswer, respondido } = props;
+  const { handleClick, indexChange, resetingAnswer, respondido } = props;
   return (
     <div>
       <button
@@ -40,19 +40,11 @@ function ButtonFeedBack({ resetingAnswer, respondido }) {
 
 class BotaoProximo extends Component {
   render() {
-    const {
-      disabled,
-      handleClick,
-      indexChange,
-      resetingAnswer,
-      respondido,
-      indexJogo,
-    } = this.props;
+    const { handleClick, indexChange, resetingAnswer, respondido, indexJogo } = this.props;
     return indexJogo === 4 ? (
-      <ButtonFeedBack respondido={respondido} disabled={disabled} resetingAnswer={resetingAnswer} />
+      <ButtonFeedBack respondido={respondido} resetingAnswer={resetingAnswer} />
     ) : (
       <ButtonNext
-        disabled={disabled}
         handleClick={handleClick}
         indexChange={indexChange}
         resetingAnswer={resetingAnswer}
@@ -73,12 +65,23 @@ const mapStateToProps = (state) => ({
 });
 
 BotaoProximo.propTypes = {
-  disabled: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
   indexChange: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
   indexJogo: PropTypes.number.isRequired,
+};
+
+ButtonFeedBack.propTypes = {
+  resetingAnswer: PropTypes.func.isRequired,
+  respondido: PropTypes.bool.isRequired,
+};
+
+ButtonNext.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  indexChange: PropTypes.func.isRequired,
+  resetingAnswer: PropTypes.func.isRequired,
+  respondido: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BotaoProximo);

@@ -52,7 +52,7 @@ class Jogo extends Component {
               </div>
               <div><Contador /></div>
             </div>
-            <BotaoProximo disabled={disabled} handleClick={this.finishQuestion} />
+            <BotaoProximo handleClick={this.finishQuestion} />
           </div>
         </div>
       );
