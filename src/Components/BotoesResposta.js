@@ -1,7 +1,8 @@
 // referência https://github.com/tryber/sd-03-project-trivia-react-redux-05/pull/10
-
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { chooseAnswer } from '../Actions';
 
 function shuffle(optionArray) {
   /* Essa função recebe um array de objetos, e retorna um novo array do mesmo
@@ -40,19 +41,8 @@ function questionArray(questionsWrong, questionCorrect) {
 }
 
 class BotoesResposta extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      respondido: false,
-    };
-  }
-
-  stateButton() {
-    this.setState({ respondido: true });
-  }
-
   styleButton(tipo) {
-    if (this.state.respondido) {
+    if (this.props.respondido) {
       if (tipo === 'correto') {
         return { border: '3px solid rgb(6, 240, 15)' };
       }
@@ -66,15 +56,16 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha a key question com a string
     da resposta correta */
     const { question } = props;
-    const { handleClick } = this.props;
+    const { handleClick, chooseAnswer, respondido } = this.props;
     return (
       <button
         data-testid={'correct-answer'}
         className="buttonCorrectAnswer"
         onClick={() => {
-          this.stateButton();
-          handleClick();
+          chooseAnswer();
+          respondido||handleClick();
         }}
+        disabled={respondido}
         style={this.styleButton('correto')}
         type="button"
       >
@@ -88,14 +79,15 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha as keys question (com a string da resposta)
     idx, que é o indice da respostar */
     const { question, idx } = props;
-    const { handleClick } = this.props;
+    const { handleClick, chooseAnswer, respondido } = this.props;
     return (
       <button
         data-testid={`wrong-answer-${idx}`}
         className="buttonWrongAnswer"
+        disabled={respondido}
         onClick={() => {
-          this.stateButton();
-          handleClick();
+          chooseAnswer();
+          respondido||handleClick();
         }}
         style={this.styleButton()}
         type="button"
@@ -111,17 +103,27 @@ class BotoesResposta extends Component {
     return (
       <div>
         {shuffledAnswers.map((answer) =>
-          (answer.typeQuestion ? this.RespostaCorreta(answer) : this.RespostaErrada(answer)),
+          answer.typeQuestion ? this.RespostaCorreta(answer) : this.RespostaErrada(answer),
         )}
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  respondido: state.answerReducer.respondido,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  chooseAnswer: () => dispatch(chooseAnswer()),
+});
+
 BotoesResposta.propTypes = {
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string).isRequired,
   correctAnswer: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
+  respondido: PropTypes.bool.isRequired,
+  chooseAnswer: PropTypes.func.isRequired,
 };
 
-export default BotoesResposta;
+export default connect(mapStateToProps, mapDispatchToProps)(BotoesResposta);

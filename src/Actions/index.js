@@ -18,3 +18,10 @@ export {
   CHANGEINDEX,
   changeIndex,
 } from './IndexQuestionActions';
+
+export {
+  CHOOSE_ANSWER,
+  RESET_ANSWER,
+  chooseAnswer,
+  resetAnswer,
+} from './answerActions'

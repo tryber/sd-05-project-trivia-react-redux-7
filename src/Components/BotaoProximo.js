@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeIndex } from '../Actions';
+import { changeIndex, resetAnswer } from '../Actions';
 
 class BotaoProximo extends Component {
   render() {
-    const { disabled, handleClick, changeIndex } = this.props;
+    const { disabled, handleClick, changeIndex, resetAnswer } = this.props;
     return (
       <div>
         <button
@@ -13,6 +13,7 @@ class BotaoProximo extends Component {
           data-testid="btn-next"
           disabled={disabled}
           onClick={() => {
+            resetAnswer();
             changeIndex();
             handleClick();
           }}
@@ -26,6 +27,7 @@ class BotaoProximo extends Component {
 
 const mapDispathToProps = (dispath) => ({
   changeIndex: (indexJogo) => dispath(changeIndex(indexJogo)),
+  resetAnswer: () => dispath(resetAnswer()),
 });
 
 BotaoProximo.propTypes = {
