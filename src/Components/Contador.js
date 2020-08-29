@@ -6,7 +6,7 @@
 import React from 'react';
 
 class Contador extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       timer: 30,
@@ -30,10 +30,10 @@ class Contador extends React.Component {
   tempo() {
     this.inicioTempo = setInterval(() => {
       this.setState(({ timer }) => ({
-      timer: timer - 1,
-        }))
-      }, 1000);
-    }
+        timer: timer - 1,
+      }));
+    }, 1000);
+  }
 
   render() {
     const { timer } = this.state;
@@ -45,4 +45,4 @@ class Contador extends React.Component {
   }
 }
 
- export default Contador;
+export default Contador;
