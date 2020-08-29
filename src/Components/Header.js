@@ -44,7 +44,6 @@ Header.propTypes = {
   gravatarLink: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-  assertions: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

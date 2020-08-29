@@ -20,12 +20,12 @@ const loginReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         score: state.score + 10,
-      }
+      };
     case SETASSERTIONS:
       return {
         ...state,
         assertions: state.assertions + 1,
-      }
+      };
     default:
       return state;
   }
