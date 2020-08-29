@@ -44,8 +44,7 @@ class Inicio extends React.Component {
         </div>
         <Link to="/config">
           <button
-            id="settings" data-testid="btn-settings" disabled={this.buttonState()}
-            className="button"
+            id="settings" data-testid="btn-settings" className="button"
           >
             Configurações
           </button>
