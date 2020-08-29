@@ -4,6 +4,7 @@
 // react-30-day-challenge-day-1-simple-timer-df85d0867553
 // https://www.youtube.com/watch?v=jCuDrD5-TG8
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Contador extends React.Component {
@@ -11,6 +12,7 @@ class Contador extends React.Component {
     super(props);
     this.state = {
       timer: 30,
+      timerOn: !this.props.respondido,
     };
   }
 
@@ -20,13 +22,13 @@ class Contador extends React.Component {
   }
 
   // atualiza o timer e reseta quando acaba
-  componentDidUpdate() {
+  /* componentDidUpdate() {
     const { timer } = this.state;
     if (timer === 0) {
       clearInterval(this.inicioTempo);
     }
   }
-
+ */
   /* componentWillUnmount() {
     if (!respondido) {
     }
@@ -45,12 +47,24 @@ class Contador extends React.Component {
     return this.setState({ timer: 30 });
   }
 
+  stopTimer = () => {
+    clearInterval(this.timer);
+  };
+
+  resetTimer = () => {
+    if (this.state.respondido === false) {
+      this.setState({
+        timer: this.state.inicioTempo
+      });
+    }
+  };
+
   render() {
     const { timer } = this.state;
-    // const { respondido } = this.props;
-    /* if (!respondido) {
-      this.setState({ timer: 30 });
-    } */
+    const { respondido } = this.props;
+    if (respondido) {
+      this.stopTimer();
+    }
     return (
       <div>
         <h1>Tempo restante {timer}</h1>
@@ -63,8 +77,8 @@ Contador.propTypes = {
   respondido: PropTypes.bool.isRequired,
 };
 
-Contador.defaultProps = {
-  respondido: false,
-};
+const mapStateToProps = (state) => ({
+  respondido: state.answerReducer.respondido,
+});
 
-export default Contador;
+export default connect(mapStateToProps)(Contador);
