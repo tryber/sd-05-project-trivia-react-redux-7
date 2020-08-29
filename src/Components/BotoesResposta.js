@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { chooseAnswer } from '../Actions';
+import { chooseAnswer, setScore, setAssertions } from '../Actions';
 
 function shuffle(optionArray) {
   /* Essa função recebe um array de objetos, e retorna um novo array do mesmo
@@ -56,13 +56,15 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha a key question com a string
     da resposta correta */
     const { question } = props;
-    const { handleClick, choosingAnswer, respondido } = this.props;
+    const { handleClick, choosingAnswer, respondido, setingScore, setingAssertions } = this.props;
     return (
       <button
         data-testid={'correct-answer'}
         className="buttonCorrectAnswer"
         onClick={() => {
           choosingAnswer();
+          setingScore();
+          setingAssertions();
           if (!respondido) handleClick();
         }}
         disabled={respondido}
@@ -119,6 +121,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   choosingAnswer: () => dispatch(chooseAnswer()),
+  setingScore: () => dispatch(setScore()),
+  setingAssertions: () => dispatch(setAssertions()),
 });
 
 BotoesResposta.propTypes = {
@@ -127,6 +131,8 @@ BotoesResposta.propTypes = {
   handleClick: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
   choosingAnswer: PropTypes.func.isRequired,
+  setingScore: PropTypes.func.isRequired,
+  setingAssertions: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BotoesResposta);
