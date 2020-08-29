@@ -3,7 +3,8 @@
 // https://medium.com/@650egor/
 // react-30-day-challenge-day-1-simple-timer-df85d0867553
 // https://www.youtube.com/watch?v=jCuDrD5-TG8
-import React from 'react';
+import React from "react";
+import PropTypes from 'prop-types';
 
 class Contador extends React.Component {
   constructor(props) {
@@ -26,23 +27,44 @@ class Contador extends React.Component {
     }
   }
 
+  /* componentWillUnmount() {
+    if (!respondido) {
+    }
+  } */
+
   // vai diminuindo de 1 em 1 s
   tempo() {
+    const {respondido } = this.props;
+    if (!respondido) {
     this.inicioTempo = setInterval(() => {
       this.setState(({ timer }) => ({
         timer: timer - 1,
       }));
     }, 1000);
+    }
+    return this.setState({ timer: 30 });
   }
 
   render() {
     const { timer } = this.state;
+    const { respondido } = this.props;
+    /* if (!respondido) {
+      this.setState({ timer: 30 });
+    } */
     return (
       <div>
         <h1>Tempo restante {timer}</h1>
       </div>
     );
   }
+}
+
+Contador.propTypes = {
+  respondido: PropTypes.bool.isRequired,
+}
+
+Contador.defaultProps = {
+  respondido: false,
 }
 
 export default Contador;
