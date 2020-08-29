@@ -10,6 +10,7 @@ import EmailInput from '../Components/EmailInput';
 import NameInput from '../Components/NameInput';
 import { fechQuestion } from '../Actions';
 import { ResultToken } from '../Services/API';
+import BotaoJogar from '../Components/BotaoJogar';
 
 class Inicio extends React.Component {
   constructor(props) {
@@ -43,24 +44,19 @@ class Inicio extends React.Component {
           <EmailInput onChange={(event) => this.handleChange(event)} />
         </div>
         <Link to="/config">
-          <button
-            id="settings" data-testid="btn-settings" disabled={this.buttonState()}
-            className="button"
-          >
+          <button id="settings" data-testid="btn-settings" className="button">
             Configurações
           </button>
         </Link>
-        <Link to="/jogo">
-          <button
-            id="playButton" data-testid="btn-play" disabled={this.buttonState()}
-            className="button" onClick={() => {
-              getGravatarAvatar(name, email);
-              ResultToken();
-            }}
-          >
-            Jogar
-          </button>
-        </Link>
+        <BotaoJogar
+          name={name}
+          email={email}
+          buttonState={this.buttonState()}
+          handleClick={() => {
+            getGravatarAvatar(name, email);
+            ResultToken();
+          }}
+        />
       </div>
     );
   }

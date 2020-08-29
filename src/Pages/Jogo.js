@@ -24,9 +24,9 @@ class Jogo extends Component {
   }
 
   finishQuestion() {
-    this.setState({
-      disabled: false,
-    });
+    this.setState((state) => ({
+      disabled: !state.disabled,
+    }));
   }
 
   render() {
@@ -52,7 +52,7 @@ class Jogo extends Component {
               </div>
               <div><Contador /></div>
             </div>
-            <BotaoProximo disabled={disabled} />
+            <BotaoProximo disabled={disabled} handleClick={this.finishQuestion} />
           </div>
         </div>
       );

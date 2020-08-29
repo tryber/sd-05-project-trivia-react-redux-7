@@ -84,6 +84,10 @@
   width: 80%;
 }
 
+.buttonNull {
+  display: none;
+}
+
 .button {
   border-radius: 15px;
   font-size: 20px;
