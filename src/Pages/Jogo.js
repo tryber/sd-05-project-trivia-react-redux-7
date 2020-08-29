@@ -31,7 +31,6 @@ class Jogo extends Component {
 
   render() {
     const { questions, indexJogo, isFetching } = this.props;
-    const { disabled } = this.state;
     if (!isFetching) {
       const actualQuestion = questions[indexJogo];
       return (
@@ -50,7 +49,9 @@ class Jogo extends Component {
                   handleClick={this.finishQuestion}
                 />
               </div>
-              <div><Contador /></div>
+              <div>
+                <Contador />
+              </div>
             </div>
             <BotaoProximo handleClick={this.finishQuestion} />
           </div>
