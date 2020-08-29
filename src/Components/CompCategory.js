@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class CompCategoty extends Component {
   constructor(props) {
     super(props);
-    this.categoryIndex = this.categoryIndex;
+    this.categoryIndex = this.categoryIndex.bind(this);
   }
 
   categoryIndex() {
