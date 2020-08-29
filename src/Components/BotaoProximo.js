@@ -4,18 +4,18 @@ import { connect } from 'react-redux';
 import { changeIndex } from '../Actions';
 
 class BotaoProximo extends Component {
-
   render() {
-    const { disabled } = this.props;
+    const { disabled, handleClick, changeIndex } = this.props;
     return (
       <div>
         <button
           className="button"
           data-testid="btn-next"
           disabled={disabled}
-          onClick={() =>
-            this.props.changeIndex()
-          }
+          onClick={() => {
+            changeIndex();
+            handleClick();
+          }}
         >
           Próxima
         </button>
@@ -31,6 +31,7 @@ const mapDispathToProps = (dispath) => ({
 BotaoProximo.propTypes = {
   changeIndex: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispathToProps)(BotaoProximo);
