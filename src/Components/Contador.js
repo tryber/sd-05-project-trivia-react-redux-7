@@ -5,43 +5,43 @@
 import React from 'react';
 
 class Contador extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        timer: 30
-      }
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      timer: 30,
+    };
+  }
 
-    // chama o timer na tela quando carrega
-    componentDidMount() {
-      this.tempo();
-    }
+  // chama o timer na tela quando carrega
+  componentDidMount() {
+    this.tempo();
+  }
 
-    // atualiza o timer e reseta quando acaba
-    componentDidUpdate() {
-      const { timer } = this.state;
-      if (timer === 0) {
-        clearInterval(this.inicioTempo);
-      }
+  // atualiza o timer e reseta quando acaba
+  componentDidUpdate() {
+    const { timer } = this.state;
+    if (timer === 0) {
+      clearInterval(this.inicioTempo);
     }
+  }
 
-    // vai diminuindo de 1 em 1 s
-    tempo() {
-      this.inicioTempo = setInterval(() => {
-        this.setState(({ timer }) => ({
-        timer: timer - 1,
+  // vai diminuindo de 1 em 1 s
+  tempo() {
+    this.inicioTempo = setInterval(() => {
+      this.setState(({ timer }) => ({
+      timer: timer - 1,
         }))
       }, 1000);
     }
 
-    render() {
-      const { timer } = this.state;
-      return (
-        <div>
-          <h1>Tempo restante {timer}</h1>
-        </div>
-      );
-    }
+  render() {
+    const { timer } = this.state;
+    return (
+      <div>
+        <h1>Tempo restante {timer}</h1>
+      </div>
+    );
   }
+}
 
  export default Contador;
