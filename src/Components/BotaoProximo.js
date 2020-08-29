@@ -4,13 +4,6 @@ import { connect } from 'react-redux';
 import { changeIndex, resetAnswer } from '../Actions';
 
 class BotaoProximo extends Component {
-
-  saveToLocalStorage() {
-    const { name, assertions, score, gravatarEmail } = this.props;
-    const toStorage = { player: { name, assertions, score, gravatarEmail } };
-    localStorage.setItem('state', JSON.stringify(toStorage));
-  }
-
   render() {
     const { disabled, handleClick, indexChange, resetingAnswer, respondido } = this.props;
 
@@ -24,7 +17,6 @@ class BotaoProximo extends Component {
             resetingAnswer();
             indexChange();
             handleClick();
-            this.saveToLocalStorage();
           }}
         >
           Próxima
@@ -40,10 +32,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  name: state.loginReducer.name,
-  assertions: state.loginReducer.assertions,
-  score: state.loginReducer.score,
-  gravatarEmail: state.loginReducer.email,
   respondido: state.answerReducer.respondido,
 });
 

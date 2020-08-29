@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { chooseAnswer, setScore, setAssertions } from '../Actions';
+import saveToLocalStorage from '../Services/saveToLocalStorage';
 
 function shuffle(optionArray) {
   /* Essa função recebe um array de objetos, e retorna um novo array do mesmo
@@ -56,7 +57,7 @@ class BotoesResposta extends Component {
     ele deve receber um objeto que tenha a key question com a string
     da resposta correta */
     const { question } = props;
-    const { handleClick, choosingAnswer, respondido, setingScore, setingAssertions } = this.props;
+    const { name, gravatarEmail, assertions, score, handleClick, choosingAnswer, respondido, setingScore, setingAssertions } = this.props;
     return (
       <button
         data-testid={'correct-answer'}
@@ -65,7 +66,10 @@ class BotoesResposta extends Component {
           choosingAnswer();
           setingScore();
           setingAssertions();
-          if (!respondido) handleClick();
+          if (!respondido) {
+            handleClick();
+            saveToLocalStorage(name, assertions, score, gravatarEmail);
+          }
         }}
         disabled={respondido}
         style={this.styleButton('correto')}
@@ -117,6 +121,10 @@ class BotoesResposta extends Component {
 
 const mapStateToProps = (state) => ({
   respondido: state.answerReducer.respondido,
+  name: state.loginReducer.name,
+  assertions: state.loginReducer.assertions,
+  score: state.loginReducer.score,
+  gravatarEmail: state.loginReducer.email,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -133,6 +141,10 @@ BotoesResposta.propTypes = {
   choosingAnswer: PropTypes.func.isRequired,
   setingScore: PropTypes.func.isRequired,
   setingAssertions: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  assertions: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  gravatarEmail: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BotoesResposta);
