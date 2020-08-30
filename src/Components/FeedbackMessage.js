@@ -12,7 +12,7 @@ const Message = (props) => {
 };
 
 const TotalScore = (props) => (
-  <span className="feedbackText" data-testid="deedback-total-score">
+  <span className="feedbackText" data-testid="feedback-total-score">
     Um total de <span>{props.score}</span> pontos
   </span>
 );
