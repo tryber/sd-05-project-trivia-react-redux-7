@@ -25,15 +25,22 @@ function ButtonNext(props) {
 
 function ButtonFeedBack({ resetingAnswer, respondido }) {
   return respondido ? (
-    <Link to="/feedback" className={respondido ? 'button' : 'buttonNull'}>
-      <button
+    <Link
+      to="/feedback"
+      data-testid="btn-next"
+      className={respondido ? 'button' : 'buttonNull'}
+      onClick={() => {
+        resetingAnswer();
+      }}
+    >
+      {/* <button
         className={respondido ? 'button' : 'buttonNull'}
         onClick={() => {
           resetingAnswer();
         }}
-      >
-        Resultado
-      </button>
+      > */}
+      Resultado
+      {/* </button> */}
     </Link>
   ) : null;
 }
