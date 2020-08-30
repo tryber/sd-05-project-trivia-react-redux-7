@@ -10,8 +10,6 @@ export function saveStateUserToLocal(player) {
   if (actualStorage) {
     newStorage = [...actualStorage];
   }
-  console.log(actualStorage);
   newStorage.push(player);
-  console.log(newStorage);
   localStorage.setItem(RANKING, JSON.stringify(newStorage));
 }

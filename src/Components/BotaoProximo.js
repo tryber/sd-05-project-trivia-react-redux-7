@@ -28,7 +28,6 @@ function ButtonFeedBack({
   respondido,
   userState
 }) {
-  console.log(userState);
   return (
     <Link to="/feedback">
       <button
