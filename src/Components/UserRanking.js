@@ -40,7 +40,7 @@ class UserRanking extends React.Component {
   }
 }
 
-UserRanking.propTypes = {
+DadosUser.propTypes = {
   picture: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
