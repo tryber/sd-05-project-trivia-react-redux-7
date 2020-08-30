@@ -7,7 +7,6 @@ export default class Ranking extends Component {
   render() {
     return (
       <div>
-        <Header />
         <UserRanking />
         <Link to="/">
           <button data-testid="btn-go-home">
