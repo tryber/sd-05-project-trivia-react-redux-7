@@ -22,10 +22,24 @@ const TotalScore = (props) => (
 );
 
 class FeedbackMessage extends Component {
+  styleCont() {
+    const { assertions } = this.props;
+    if (assertions > 3) {
+      return {
+        color: 'rgb(0,128,128)',
+        fontWeight: 'bold',
+      };
+    }
+    return {
+      color: 'rgb(212, 0, 0)',
+      fontWeight: 'bold',
+    };
+  }
+
   render() {
     const { score, assertions } = this.props;
     return (
-      <div>
+      <div style={this.styleCont()}>
         <Message assertions={assertions} />
         <div className="feedbackText">
           Você acertou <span data-testid="feedback-total-question">{assertions}</span> questões!

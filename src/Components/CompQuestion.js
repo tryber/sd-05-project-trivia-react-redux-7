@@ -11,7 +11,7 @@ export default class CompQuestion extends Component {
         <div className="campoPergunta">
           {question}
         </div>
-        <div className="alternativas">
+        <div>
           <BotoesResposta
             correctAnswer={this.props.correct_answer}
             incorrectAnswers={this.props.incorrect_answers}

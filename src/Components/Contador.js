@@ -52,11 +52,27 @@ class Contador extends React.Component {
     }, 1000);
   }
 
+  styleCont() {
+    const { timer } = this.state;
+    if (timer > 20) {
+      return { color: 'rgb(0,128,128)' };
+    }
+    if (timer > 10) {
+      return { color: 'rgb(221, 127, 19)' };
+    }
+    return { color: 'rgb(212, 0, 0)' };
+  }
+
   render() {
     const { timer } = this.state;
     return (
       <div>
-        <h1>Tempo restante {timer}</h1>
+        <h2
+          className="contador"
+          style={this.styleCont()}
+        >
+        Tempo restante: {timer}
+        </h2>
       </div>
     );
   }

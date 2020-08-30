@@ -1,9 +1,9 @@
 .header {
   align-items: center;
-  background-color: green;
+  background-color: rgba(0, 0, 0, 0.945);
   border: 1px solid black;
   display: inline-flex;
-  height: 70px;
+  height: 90px;
   justify-content: space-around;
   left: 0;
   padding: 0 5px;
@@ -24,10 +24,19 @@
   margin: 0 5px 0 0;
 }
 
+.containerScore {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
 .scoreStyle {
-  font-size: 30px;
+  color: teal;
+  font-size: 40px;
   font-style: normal;
+  font-weight: 800;
   line-height: 30px;
+  margin: 10px;
 }
 
 .player-avatar {
