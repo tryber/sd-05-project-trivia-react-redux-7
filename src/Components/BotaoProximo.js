@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeIndex, resetAnswer } from '../Actions';
+import { changeIndex, resetAnswer, resetTime } from '../Actions';
 
 class BotaoProximo extends Component {
   render() {
-    const { disabled, handleClick, indexChange, resetingAnswer, respondido } = this.props;
-
+    const { disabled, handleClick, indexChange,
+      resetingAnswer, respondido, resetingTime } = this.props;
     return (
       <div>
         <button
@@ -17,6 +17,7 @@ class BotaoProximo extends Component {
             resetingAnswer();
             indexChange();
             handleClick();
+            resetingTime();
           }}
         >
           Próxima
@@ -29,6 +30,7 @@ class BotaoProximo extends Component {
 const mapDispatchToProps = (dispatch) => ({
   indexChange: (indexJogo) => dispatch(changeIndex(indexJogo)),
   resetingAnswer: () => dispatch(resetAnswer()),
+  resetingTime: () => dispatch(resetTime()),
 });
 
 const mapStateToProps = (state) => ({
@@ -41,6 +43,7 @@ BotaoProximo.propTypes = {
   indexChange: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
+  resetingTime: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BotaoProximo);

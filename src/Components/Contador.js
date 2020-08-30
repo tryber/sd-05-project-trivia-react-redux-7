@@ -5,6 +5,8 @@
 // https://www.youtube.com/watch?v=jCuDrD5-TG8
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { resetState } from '../Actions';
 
 class Contador extends React.Component {
   constructor(props) {
@@ -22,35 +24,36 @@ class Contador extends React.Component {
   // atualiza o timer e reseta quando acaba
   componentDidUpdate() {
     const { timer } = this.state;
+    const { respondido, timeReset, resetingState } = this.props;
     if (timer === 0) {
       clearInterval(this.inicioTempo);
     }
+    if (respondido) {
+      clearInterval(this.inicioTempo);
+    }
+    if (timeReset) {
+      this.startTime();
+      resetingState();
+      this.tempo();
+    }
   }
 
-  /* componentWillUnmount() {
-    if (!respondido) {
-    }
-  } */
+  startTime() {
+    this.setState({
+      timer: 30,
+    });
+  }
 
-  // vai diminuindo de 1 em 1 s
   tempo() {
-    const { respondido } = this.props;
-    if (!respondido) {
-      this.inicioTempo = setInterval(() => {
-        this.setState(({ timer }) => ({
-          timer: timer - 1,
-        }));
-      }, 1000);
-    }
-    return this.setState({ timer: 30 });
+    this.inicioTempo = setInterval(() => {
+      this.setState(({ timer }) => ({
+        timer: timer - 1,
+      }));
+    }, 1000);
   }
 
   render() {
     const { timer } = this.state;
-    // const { respondido } = this.props;
-    /* if (!respondido) {
-      this.setState({ timer: 30 });
-    } */
     return (
       <div>
         <h1>Tempo restante {timer}</h1>
@@ -61,10 +64,26 @@ class Contador extends React.Component {
 
 Contador.propTypes = {
   respondido: PropTypes.bool.isRequired,
+  timeReset: PropTypes.bool.isRequired,
+  resetingState: PropTypes.func.isRequired,
 };
 
 Contador.defaultProps = {
   respondido: false,
 };
 
-export default Contador;
+const mapStateToProps = (state) => ({
+  respondido: state.answerReducer.respondido,
+  timeReset: state.contadorReducer.timeReset,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  resetingState: () => dispatch(resetState()),
+});
+
+Contador.propTypes = {
+  respondido: PropTypes.bool.isRequired,
+  resetingState: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contador);

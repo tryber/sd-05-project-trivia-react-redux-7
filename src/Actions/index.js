@@ -14,6 +14,21 @@ export {
   setAssertions,
 } from './LoginActions';
 
-export { CHANGEINDEX, changeIndex } from './IndexQuestionActions';
+export {
+  CHANGEINDEX,
+  changeIndex,
+} from './IndexQuestionActions';
 
-export { CHOOSE_ANSWER, RESET_ANSWER, chooseAnswer, resetAnswer } from './answerActions';
+export {
+  CHOOSE_ANSWER,
+  RESET_ANSWER,
+  chooseAnswer,
+  resetAnswer,
+} from './answerActions';
+
+export {
+  RESETTIME,
+  RESETSTATE,
+  resetTime,
+  resetState,
+} from './contadorAction';
