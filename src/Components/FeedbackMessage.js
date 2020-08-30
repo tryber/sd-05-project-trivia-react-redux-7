@@ -19,6 +19,7 @@ const TotalScore = (props) => (
   <div className="feedbackText">
     Um total de <span data-testid="feedback-total-score">{props.score}</span> pontos
   </div>
+
 );
 
 class FeedbackMessage extends Component {
