@@ -1,19 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
 import { connect } from 'react-redux';
-import {resetPlacar, resetIndex, unblockAnswer, resetAnswer, resetState} from '../Actions';
+import PropTypes from 'prop-types';
+import { resetPlacar, resetIndex, unblockAnswer, resetAnswer, resetState } from '../Actions';
+import '../App.css';
 
-const PlayAgain = ({resetingPlacar, resetingIndex,
-  unblockingAnswer, resetingAnswer, resetingState}) => (
+const PlayAgain = ({
+  resetingPlacar,
+  resetingIndex,
+  unblockingAnswer,
+  resetingAnswer,
+  resetingState,
+}) => (
   <Link to="/" data-testid="btn-play-again">
-    <button className="button buttonVerde" onClick={() => {
-      resetingPlacar();
-      resetingIndex();
-      unblockingAnswer();
-      resetingAnswer();
-      resetingState();
-    }}
+    <button
+      className="button buttonVerde"
+      onClick={() => {
+        resetingPlacar();
+        resetingIndex();
+        unblockingAnswer();
+        resetingAnswer();
+        resetingState();
+      }}
     >
       Jogar novamente
     </button>
@@ -26,6 +34,14 @@ const mapDispatchToProps = (dispatch) => ({
   unblockingAnswer: () => dispatch(unblockAnswer()),
   resetingAnswer: () => dispatch(resetAnswer()),
   resetingState: () => dispatch(resetState()),
-})
+});
+
+PlayAgain = {
+  resetingPlacar: PropTypes.func.isRequired,
+  resetingIndex: PropTypes.func.isRequired,
+  unblockingAnswer: PropTypes.func.isRequired,
+  resetingAnswer: PropTypes.func.isRequired,
+  resetingState: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(PlayAgain);

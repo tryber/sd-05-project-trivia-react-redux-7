@@ -33,15 +33,7 @@ const loginReducer = (state = INITIAL_STATE, action) => {
       saveToLocalStorage(newState.name, newState.assertions, newState.score, newState.email);
       return newState;
     case RESETPLACAR:
-      return {
-        ...state,
-        score: 0,
-        assertions: 0,
-        gravatarLink: '',
-        name: '',
-        email: '',
-        isLogged: false,
-      }
+      return INITIAL_STATE;
     default:
       return state;
   }

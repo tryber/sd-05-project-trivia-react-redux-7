@@ -22,9 +22,7 @@ export function fechQuestion() {
   return (dispath) => {
     dispath(startNemQuestion());
     return ApiQuestion()
-      .then(
-        (data) => dispath(startNemQuestionSuccess(data)))
-      .catch(
-        (error) => dispath(startNemQuestionFailure(error.message)));
+      .then((data) => dispath(startNemQuestionSuccess(data)))
+      .catch((error) => dispath(startNemQuestionFailure(error.message)));
   };
 }
