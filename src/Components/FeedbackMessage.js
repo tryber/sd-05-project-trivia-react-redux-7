@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+function messageByScore(wins) {
+  return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
+}
+
 const Message = (props) => {
   const { assertions } = props;
   return (
@@ -17,9 +21,6 @@ const TotalScore = (props) => (
   </div>
 );
 
-function messageByScore(wins) {
-  return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
-}
 class FeedbackMessage extends Component {
   render() {
     const { score, assertions } = this.props;
@@ -37,7 +38,7 @@ class FeedbackMessage extends Component {
 }
 
 Message.propTypes = {
-  message: PropTypes.string.isRequired,
+  assertions: PropTypes.number.isRequired,
 };
 
 TotalScore.propTypes = {
