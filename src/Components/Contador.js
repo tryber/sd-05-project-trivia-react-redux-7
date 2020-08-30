@@ -1,4 +1,4 @@
-/* timer só está fazendo a contagem regressiva e resetando
+// timer só está fazendo a contagem regressiva e resetando
 // quando o tempo acaba
 // https://medium.com/@650egor/
 // react-30-day-challenge-day-1-simple-timer-df85d0867553
@@ -6,6 +6,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { resetState } from '../Actions';
 
 class Contador extends React.Component {
   constructor(props) {
@@ -22,29 +23,34 @@ class Contador extends React.Component {
   }
 
   // atualiza o timer e reseta quando acaba
-  /* componentDidUpdate() {
+  componentDidUpdate() {
     const { timer } = this.state;
+    const { respondido, timeReset, resetingState } = this.props;
     if (timer === 0) {
       clearInterval(this.inicioTempo);
     }
-  }
- */
-  /* componentWillUnmount() {
-    if (!respondido) {
+    if (respondido) {
+      clearInterval(this.inicioTempo);
+    }
+    if (timeReset) {
+      this.startTime();
+      resetingState();
+      this.tempo();
     }
   }
 
-  // vai diminuindo de 1 em 1 s
+  startTime() {
+    this.setState({
+      timer: 30,
+    });
+  }
+
   tempo() {
-    const { respondido } = this.props;
-    if (!respondido) {
-      this.inicioTempo = setInterval(() => {
-        this.setState(({ timer }) => ({
-          timer: timer - 1,
-        }));
-      }, 1000);
-    }
-    return this.setState({ timer: 30 });
+    this.inicioTempo = setInterval(() => {
+      this.setState(({ timer }) => ({
+        timer: timer - 1,
+      }));
+    }, 1000);
   }
 
   stopTimer = () => {
@@ -54,17 +60,14 @@ class Contador extends React.Component {
   resetTimer = () => {
     if (this.state.respondido === false) {
       this.setState({
-        timer: this.state.inicioTempo
+        timer: this.state.inicioTempo,
       });
     }
   };
 
   render() {
     const { timer } = this.state;
-    const { respondido } = this.props;
-    if (respondido) {
-      this.stopTimer();
-    }
+
     return (
       <div>
         <h1>Tempo restante {timer}</h1>
@@ -75,11 +78,22 @@ class Contador extends React.Component {
 
 Contador.propTypes = {
   respondido: PropTypes.bool.isRequired,
+  timeReset: PropTypes.bool.isRequired,
+  resetingState: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   respondido: state.answerReducer.respondido,
+  timeReset: state.contadorReducer.timeReset,
 });
 
-export default connect(mapStateToProps)(Contador);
-*/
+const mapDispatchToProps = (dispatch) => ({
+  resetingState: () => dispatch(resetState()),
+});
+
+Contador.propTypes = {
+  respondido: PropTypes.bool.isRequired,
+  resetingState: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contador);
