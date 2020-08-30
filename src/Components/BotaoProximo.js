@@ -5,9 +5,25 @@ import { connect } from 'react-redux';
 import { changeIndex, resetAnswer } from '../Actions';
 
 function ButtonNext(props) {
-  const { handleClick, indexChange, resetingAnswer, respondido } = props;
+  const { indexJogo, handleClick, indexChange, resetingAnswer, respondido } = props;
   return (
-    <div>
+    <button
+      className={respondido ? 'button' : 'buttonNull'}
+      data-testid="btn-next"
+      onClick={() => {
+        resetingAnswer();
+        indexChange();
+        handleClick();
+      }}
+    >
+      Próxima
+    </button>
+  );
+}
+
+function ButtonFeedBack({ handleClick, indexChange, resetingAnswer, respondido }) {
+  return (
+    <Link to="/feedback">
       <button
         className={respondido ? 'button' : 'buttonNull'}
         data-testid="btn-next"
@@ -19,39 +35,24 @@ function ButtonNext(props) {
       >
         Próxima
       </button>
-    </div>
-  );
-}
-
-function ButtonFeedBack({ resetingAnswer, respondido }) {
-  return respondido ? (
-    <Link
-      to="/feedback"
-      data-testid="btn-next"
-      className={respondido ? 'button' : 'buttonNull'}
-      onClick={() => {
-        resetingAnswer();
-      }}
-    >
-      {/* <button
-        className={respondido ? 'button' : 'buttonNull'}
-        onClick={() => {
-          resetingAnswer();
-        }}
-      > */}
-      Resultado
-      {/* </button> */}
     </Link>
-  ) : null;
+  );
 }
 
 class BotaoProximo extends Component {
   render() {
     const { handleClick, indexChange, resetingAnswer, respondido, indexJogo } = this.props;
     return indexJogo === 4 ? (
-      <ButtonFeedBack respondido={respondido} resetingAnswer={resetingAnswer} />
+      <ButtonFeedBack
+        indexJogo={indexJogo}
+        handleClick={handleClick}
+        indexChange={indexChange}
+        resetingAnswer={resetingAnswer}
+        respondido={respondido}
+      />
     ) : (
       <ButtonNext
+        indexJogo={indexJogo}
         handleClick={handleClick}
         indexChange={indexChange}
         resetingAnswer={resetingAnswer}
