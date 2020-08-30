@@ -4,25 +4,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { chooseAnswer, setScore, setAssertions } from '../Actions';
 
-function shuffle(optionArray) {
-  /* Essa função recebe um array de objetos, e retorna um novo array do mesmo
-  com a ordem deles alterada. */
-  let oldArray = [...optionArray];
-  const newArray = [];
-  // While there are elements in the array
-  while (oldArray.length > 0) {
-    // Pick a random index
-    if (oldArray.length === 1) {
-      newArray.push(...oldArray);
-      oldArray = [];
-    } else {
-      const index = Math.floor(Math.random() * (oldArray.length - 1));
-      // Decrease counter by 1
-      newArray.push(oldArray[index]);
-      oldArray.splice(index, 1);
-    }
-  }
-  return newArray;
+function shuffle(newArray) {
+  return newArray.sort(() => Math.random() - 0.5);
 }
 
 function questionArray(questionsWrong, questionCorrect) {
