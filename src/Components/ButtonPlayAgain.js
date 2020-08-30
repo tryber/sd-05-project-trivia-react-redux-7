@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => ({
   resetingState: () => dispatch(resetState()),
 });
 
-PlayAgain = {
+PlayAgain.propTypes = {
   resetingPlacar: PropTypes.func.isRequired,
   resetingIndex: PropTypes.func.isRequired,
   unblockingAnswer: PropTypes.func.isRequired,
