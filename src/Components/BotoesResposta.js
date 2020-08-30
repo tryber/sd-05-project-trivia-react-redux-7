@@ -112,7 +112,7 @@ class BotoesResposta extends Component {
     const { correctAnswer, incorrectAnswers } = this.props;
     const shuffledAnswers = questionArray(incorrectAnswers, correctAnswer);
     return (
-      <div>
+      <div className="alternativas">
         {shuffledAnswers.map((answer) => {
           if (answer.typeQuestion) {
             return this.RespostaCorreta(answer);

@@ -38,6 +38,9 @@ class Jogo extends Component {
           <Header />
           <div>
             <div className="pergunta">
+              <div>
+                <Contador />
+              </div>
               <div className="category" data-testid="question-category">
                 <CompCategory />
               </div>
@@ -48,9 +51,6 @@ class Jogo extends Component {
                   incorrect_answers={actualQuestion.incorrect_answers}
                   handleClick={this.finishQuestion}
                 />
-              </div>
-              <div>
-                <Contador />
               </div>
             </div>
             <BotaoProximo handleClick={this.finishQuestion} />

@@ -8,7 +8,7 @@ import { saveStateUserToLocal } from '../Services/saveToLocalStorage';
 function ButtonNext({ handleClick, indexChange, resetingAnswer, respondido, resetingTime }) {
   return (
     <button
-      className={respondido ? 'button' : 'buttonNull'}
+      className={respondido ? 'button buttonVerde' : 'buttonNull'}
       data-testid="btn-next"
       onClick={() => {
         resetingAnswer();
