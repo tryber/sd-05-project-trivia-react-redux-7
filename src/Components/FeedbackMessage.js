@@ -24,7 +24,7 @@ const TotalScore = (props) => (
 class FeedbackMessage extends Component {
   styleCont() {
     const { assertions } = this.props;
-    if (assertions > 3) {
+    if (assertions >= 3) {
       return {
         color: 'rgb(0,128,128)',
         fontWeight: 'bold',
