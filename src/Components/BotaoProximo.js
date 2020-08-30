@@ -41,13 +41,13 @@ function ButtonFeedBack({ handleClick, resetingAnswer, respondido }) {
 class BotaoProximo extends Component {
   render() {
     const { handleClick, indexChange, resetingAnswer,
-      respondido, indexJogo, resetingTime } = this.props;
+      respondido, indexJogo, resetingTime, blockAnswer } = this.props;
     return indexJogo === 4 ? (
       <ButtonFeedBack
         indexJogo={indexJogo}
         handleClick={handleClick}
         resetingAnswer={resetingAnswer}
-        respondido={respondido}
+        respondido={respondido||blockAnswer}
       />
     ) : (
       <ButtonNext
@@ -55,7 +55,7 @@ class BotaoProximo extends Component {
         handleClick={handleClick}
         indexChange={indexChange}
         resetingAnswer={resetingAnswer}
-        respondido={respondido}
+        respondido={respondido||blockAnswer}
         resetingTime={resetingTime}
       />
     );
@@ -71,6 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   respondido: state.answerReducer.respondido,
   indexJogo: state.indexJogoReducer.indexJogo,
+  blockAnswer: state.answerReducer.blockAnswer,
 });
 
 BotaoProximo.propTypes = {
@@ -80,11 +81,13 @@ BotaoProximo.propTypes = {
   respondido: PropTypes.bool.isRequired,
   indexJogo: PropTypes.number.isRequired,
   resetingTime: PropTypes.func.isRequired,
+  blockAnswer: PropTypes.bool.isRequired,
 };
 
 ButtonFeedBack.propTypes = {
   handleClick: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
+  blockAnswer: PropTypes.bool.isRequired,
   respondido: PropTypes.bool.isRequired,
 };
 
@@ -93,6 +96,7 @@ ButtonNext.propTypes = {
   indexChange: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
+  blockAnswer: PropTypes.bool.isRequired,
   resetingTime: PropTypes.func.isRequired,
 };
 

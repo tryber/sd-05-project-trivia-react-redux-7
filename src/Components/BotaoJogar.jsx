@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import saveToLocalStorage from '../Services/saveToLocalStorage';
 
 const BotaoJogar = ({ buttonState, handleClick, name, email }) => (
   <Link to="/jogo">
@@ -10,7 +9,6 @@ const BotaoJogar = ({ buttonState, handleClick, name, email }) => (
       className="button"
       onClick={() => {
         handleClick();
-        saveToLocalStorage(name, 0, 0, email);
       }}
     >
       Jogar

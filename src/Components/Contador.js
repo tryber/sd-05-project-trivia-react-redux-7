@@ -6,14 +6,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { resetState } from '../Actions';
+import { resetState, blockAnswer, unblockAnswer } from '../Actions';
 
 class Contador extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       timer: 30,
-      timerOn: !this.props.respondido,
     };
   }
 
@@ -25,8 +24,9 @@ class Contador extends React.Component {
   // atualiza o timer e reseta quando acaba
   componentDidUpdate() {
     const { timer } = this.state;
-    const { respondido, timeReset, resetingState } = this.props;
-    if (timer === 0) {
+    const { respondido, timeReset, resetingState, blockingAnswer, unblockingAnswer } = this.props;
+    if (timer === 0 && !respondido) {
+      blockingAnswer();
       clearInterval(this.inicioTempo);
     }
     if (respondido) {
@@ -35,6 +35,7 @@ class Contador extends React.Component {
     if (timeReset) {
       this.startTime();
       resetingState();
+      unblockingAnswer();
       this.tempo();
     }
   }
@@ -53,18 +54,6 @@ class Contador extends React.Component {
     }, 1000);
   }
 
-  stopTimer = () => {
-    clearInterval(this.timer);
-  };
-
-  resetTimer = () => {
-    if (this.state.respondido === false) {
-      this.setState({
-        timer: this.state.inicioTempo,
-      });
-    }
-  };
-
   render() {
     const { timer } = this.state;
 
@@ -80,6 +69,8 @@ Contador.propTypes = {
   respondido: PropTypes.bool.isRequired,
   timeReset: PropTypes.bool.isRequired,
   resetingState: PropTypes.func.isRequired,
+  blockingAnswer: PropTypes.func.isRequired,
+  unblockingAnswer: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -89,11 +80,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   resetingState: () => dispatch(resetState()),
+  blockingAnswer: () => dispatch(blockAnswer()),
+  unblockingAnswer: () => dispatch(unblockAnswer()),
 });
-
-Contador.propTypes = {
-  respondido: PropTypes.bool.isRequired,
-  resetingState: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contador);

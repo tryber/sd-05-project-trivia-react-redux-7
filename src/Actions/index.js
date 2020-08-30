@@ -22,8 +22,12 @@ export {
 export {
   CHOOSE_ANSWER,
   RESET_ANSWER,
+  BLOCK_ANSWER,
+  UNBLOCK_ANSWER,
   chooseAnswer,
   resetAnswer,
+  blockAnswer,
+  unblockAnswer,
 } from './answerActions';
 
 export {
