@@ -32,7 +32,7 @@ class Contador extends React.Component {
   /* componentWillUnmount() {
     if (!respondido) {
     }
-  } 
+  }
 
   // vai diminuindo de 1 em 1 s
   tempo() {

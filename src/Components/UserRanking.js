@@ -18,7 +18,7 @@ function DadosUser(props) {
 
 class UserRanking extends React.Component {
   render() {
-    const users = JSON.parse(localStorage.getItem("ranking"));
+    const users = JSON.parse(localStorage.getItem('ranking'));
     // usar o sort para organizar o ranking
     // como é decrescente tem que ser b - a
     const userScore = users.sort((a, b) => b.score - a.score);
