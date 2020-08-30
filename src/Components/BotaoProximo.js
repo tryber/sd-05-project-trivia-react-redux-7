@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { changeIndex, resetAnswer, resetTime, blockAnswer } from '../Actions';
+import { changeIndex, resetAnswer, resetTime } from '../Actions';
 import { saveStateUserToLocal } from '../Services/saveToLocalStorage';
 
 function ButtonNext({ handleClick, indexChange, resetingAnswer, respondido, resetingTime }) {
@@ -22,12 +22,7 @@ function ButtonNext({ handleClick, indexChange, resetingAnswer, respondido, rese
   );
 }
 
-function ButtonFeedBack({
-  handleClick,
-  resetingAnswer,
-  respondido,
-  userState
-}) {
+function ButtonFeedBack({ handleClick, resetingAnswer, respondido, userState }) {
   return (
     <Link to="/feedback">
       <button
@@ -55,7 +50,9 @@ class BotaoProximo extends Component {
       indexJogo,
       resetingTime,
       blockAnswer,
-      name, score, picture
+      name,
+      score,
+      picture,
     } = this.props;
     const userState = { name, score, picture };
     return indexJogo === 4 ? (
@@ -89,7 +86,7 @@ const mapStateToProps = (state) => ({
   respondido: state.answerReducer.respondido,
   indexJogo: state.indexJogoReducer.indexJogo,
   blockAnswer: state.answerReducer.blockAnswer,
-  name:  state.loginReducer.name,
+  name: state.loginReducer.name,
   score: state.loginReducer.score,
   picture: state.loginReducer.gravatarLink,
 });
@@ -102,12 +99,16 @@ BotaoProximo.propTypes = {
   indexJogo: PropTypes.number.isRequired,
   resetingTime: PropTypes.func.isRequired,
   blockAnswer: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  picture: PropTypes.string.isRequired,
 };
 
 ButtonFeedBack.propTypes = {
   handleClick: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
+  userState: PropTypes.object.isRequired,
 };
 
 ButtonNext.propTypes = {
