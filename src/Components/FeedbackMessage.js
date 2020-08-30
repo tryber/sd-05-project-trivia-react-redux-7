@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 const Message = (props) => {
   const { message } = props;
   return (
-    <p className="feedbackTitle" data-testid="feedback-test">
+    <p className="feedbackTitle" data-testid="feedback-text">
       {message}
     </p>
   );
 };
 
 const TotalScore = (props) => (
-  <span className="feedbackText" data-testid="deedback-total-score">
+  <span className="feedbackText" data-testid="feedback-total-score">
     Um total de <span>{props.score}</span> pontos
   </span>
 );
