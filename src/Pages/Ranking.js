@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../Components/Header';
+import BotaoInicio from '../Components/BotaoInicio';
 import UserRanking from '../Components/UserRanking';
 
 export default class Ranking extends Component {
@@ -8,11 +7,7 @@ export default class Ranking extends Component {
     return (
       <div>
         <UserRanking />
-        <Link to="/">
-          <button data-testid="btn-go-home">
-            Inicio
-          </button>
-        </Link>
+        <BotaoInicio />
       </div>
     );
   }

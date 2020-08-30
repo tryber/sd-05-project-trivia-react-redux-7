@@ -9,14 +9,18 @@ export {
   GET_GRAVATAR_SUCCESS,
   SETSCORE,
   SETASSERTIONS,
+  RESETPLACAR,
   getGravatarSuccess,
   setScore,
   setAssertions,
+  resetPlacar,
 } from './LoginActions';
 
 export {
   CHANGEINDEX,
+  RESETINDEX,
   changeIndex,
+  resetIndex,
 } from './IndexQuestionActions';
 
 export {

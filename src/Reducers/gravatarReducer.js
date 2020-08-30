@@ -1,4 +1,4 @@
-import { GET_GRAVATAR_SUCCESS, SETSCORE, SETASSERTIONS } from '../Actions';
+import { GET_GRAVATAR_SUCCESS, SETSCORE, SETASSERTIONS, RESETPLACAR } from '../Actions';
 import { saveToLocalStorage } from '../Services/saveToLocalStorage';
 
 const INITIAL_STATE = {
@@ -32,6 +32,16 @@ const loginReducer = (state = INITIAL_STATE, action) => {
       };
       saveToLocalStorage(newState.name, newState.assertions, newState.score, newState.email);
       return newState;
+    case RESETPLACAR:
+      return {
+        ...state,
+        score: 0,
+        assertions: 0,
+        gravatarLink: '',
+        name: '',
+        email: '',
+        isLogged: false,
+      }
     default:
       return state;
   }
