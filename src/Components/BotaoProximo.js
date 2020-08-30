@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { changeIndex, resetAnswer, resetTime } from '../Actions';
+import { changeIndex, resetAnswer, resetTime, blockAnswer } from '../Actions';
+import { saveStateUserToLocal } from '../Services/saveToLocalStorage';
 
 function ButtonNext({ handleClick, indexChange, resetingAnswer, respondido, resetingTime }) {
   return (
@@ -21,7 +22,13 @@ function ButtonNext({ handleClick, indexChange, resetingAnswer, respondido, rese
   );
 }
 
-function ButtonFeedBack({ handleClick, resetingAnswer, respondido }) {
+function ButtonFeedBack({
+  handleClick,
+  resetingAnswer,
+  respondido,
+  userState
+}) {
+  console.log(userState);
   return (
     <Link to="/feedback">
       <button
@@ -30,6 +37,7 @@ function ButtonFeedBack({ handleClick, resetingAnswer, respondido }) {
         onClick={() => {
           resetingAnswer();
           handleClick();
+          saveStateUserToLocal(userState);
         }}
       >
         Próxima
@@ -40,14 +48,24 @@ function ButtonFeedBack({ handleClick, resetingAnswer, respondido }) {
 
 class BotaoProximo extends Component {
   render() {
-    const { handleClick, indexChange, resetingAnswer,
-      respondido, indexJogo, resetingTime, blockAnswer } = this.props;
+    const {
+      handleClick,
+      indexChange,
+      resetingAnswer,
+      respondido,
+      indexJogo,
+      resetingTime,
+      blockAnswer,
+      name, score, picture
+    } = this.props;
+    const userState = { name, score, picture };
     return indexJogo === 4 ? (
       <ButtonFeedBack
         indexJogo={indexJogo}
         handleClick={handleClick}
         resetingAnswer={resetingAnswer}
-        respondido={respondido||blockAnswer}
+        respondido={respondido || blockAnswer}
+        userState={userState}
       />
     ) : (
       <ButtonNext
@@ -55,7 +73,7 @@ class BotaoProximo extends Component {
         handleClick={handleClick}
         indexChange={indexChange}
         resetingAnswer={resetingAnswer}
-        respondido={respondido||blockAnswer}
+        respondido={respondido || blockAnswer}
         resetingTime={resetingTime}
       />
     );
@@ -72,6 +90,9 @@ const mapStateToProps = (state) => ({
   respondido: state.answerReducer.respondido,
   indexJogo: state.indexJogoReducer.indexJogo,
   blockAnswer: state.answerReducer.blockAnswer,
+  name:  state.loginReducer.name,
+  score: state.loginReducer.score,
+  picture: state.loginReducer.gravatarLink,
 });
 
 BotaoProximo.propTypes = {
@@ -87,7 +108,6 @@ BotaoProximo.propTypes = {
 ButtonFeedBack.propTypes = {
   handleClick: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
-  blockAnswer: PropTypes.bool.isRequired,
   respondido: PropTypes.bool.isRequired,
 };
 
@@ -96,7 +116,6 @@ ButtonNext.propTypes = {
   indexChange: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
-  blockAnswer: PropTypes.bool.isRequired,
   resetingTime: PropTypes.func.isRequired,
 };
 

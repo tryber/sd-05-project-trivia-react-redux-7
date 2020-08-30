@@ -1,5 +1,5 @@
 import { GET_GRAVATAR_SUCCESS, SETSCORE, SETASSERTIONS } from '../Actions';
-import saveToLocalStorage from '../Services/saveToLocalStorage';
+import { saveToLocalStorage } from '../Services/saveToLocalStorage';
 
 const INITIAL_STATE = {
   isLogged: false,
