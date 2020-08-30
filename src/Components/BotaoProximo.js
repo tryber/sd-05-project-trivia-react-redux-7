@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { changeIndex, resetAnswer } from '../Actions';
 
 function ButtonNext(props) {
-  const { indexJogo, handleClick, indexChange, resetingAnswer, respondido } = props;
+  const { handleClick, indexChange, resetingAnswer, respondido } = props;
   return (
     <button
       className={respondido ? 'button' : 'buttonNull'}
@@ -21,7 +21,7 @@ function ButtonNext(props) {
   );
 }
 
-function ButtonFeedBack({ handleClick, indexChange, resetingAnswer, respondido }) {
+function ButtonFeedBack({ handleClick, resetingAnswer, respondido }) {
   return (
     <Link to="/feedback">
       <button
@@ -29,7 +29,6 @@ function ButtonFeedBack({ handleClick, indexChange, resetingAnswer, respondido }
         data-testid="btn-next"
         onClick={() => {
           resetingAnswer();
-          indexChange();
           handleClick();
         }}
       >
@@ -46,7 +45,6 @@ class BotaoProximo extends Component {
       <ButtonFeedBack
         indexJogo={indexJogo}
         handleClick={handleClick}
-        indexChange={indexChange}
         resetingAnswer={resetingAnswer}
         respondido={respondido}
       />
@@ -81,6 +79,7 @@ BotaoProximo.propTypes = {
 };
 
 ButtonFeedBack.propTypes = {
+  handleClick: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
 };
