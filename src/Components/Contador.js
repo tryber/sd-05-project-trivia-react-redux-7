@@ -1,4 +1,4 @@
-// timer só está fazendo a contagem regressiva e resetando
+/* timer só está fazendo a contagem regressiva e resetando
 // quando o tempo acaba
 // https://medium.com/@650egor/
 // react-30-day-challenge-day-1-simple-timer-df85d0867553
@@ -32,7 +32,7 @@ class Contador extends React.Component {
   /* componentWillUnmount() {
     if (!respondido) {
     }
-  } */
+  } 
 
   // vai diminuindo de 1 em 1 s
   tempo() {
@@ -82,3 +82,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Contador);
+*/
