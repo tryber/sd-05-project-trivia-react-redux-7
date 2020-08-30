@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const Message = (props) => {
-  const { message } = props;
+  const { assertions } = props;
   return (
     <p className="feedbackTitle" data-testid="feedback-text">
-      {message}
+      {messageByScore(assertions)}
     </p>
   );
 };
 
 const TotalScore = (props) => (
-  <span className="feedbackText" data-testid="feedback-total-score">
-    Um total de <span>{props.score}</span> pontos
-  </span>
+  <div className="feedbackText">
+    Um total de <span data-testid="feedback-total-score">{props.score}</span> pontos
+  </div>
 );
 
 function messageByScore(wins) {
@@ -25,8 +25,10 @@ class FeedbackMessage extends Component {
     const { score, assertions } = this.props;
     return (
       <div>
-        <Message message={messageByScore(assertions)} />
-        <span className="feedbackText">Você acertou {assertions} questões!</span>
+        <Message assertions={assertions} />
+        <div className="feedbackText">
+          Você acertou <span data-testid="feedback-total-question">{assertions}</span> questões!
+        </div>
         <br />
         <TotalScore score={score} />
       </div>
