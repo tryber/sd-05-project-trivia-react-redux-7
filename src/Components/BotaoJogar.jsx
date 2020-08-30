@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import saveToLocalStorage from '../Services/saveToLocalStorage';
 
-const BotaoJogar = ({buttonState, handleClick, name, email}) => (
+const BotaoJogar = ({ buttonState, handleClick, name, email }) => (
   <Link to="/jogo">
     <button
       id="playButton" data-testid="btn-play" disabled={buttonState}
-      className="button" 
+      className="button"
       onClick={() => {
         handleClick();
         saveToLocalStorage(name, 0, 0, email);
@@ -20,6 +20,9 @@ const BotaoJogar = ({buttonState, handleClick, name, email}) => (
 
 BotaoJogar.propTypes = {
   name: PropTypes.string.isRequired,
+  buttonState: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export default BotaoJogar;

@@ -10,8 +10,8 @@ class Feedback extends Component {
   render() {
     return (
       <div className="container">
-        <Header score="20" />
-        <FeedbackMessage wins={3} />
+        <Header />
+        <FeedbackMessage />
         <ButtonRanking />
         <PlayAgain />
       </div>

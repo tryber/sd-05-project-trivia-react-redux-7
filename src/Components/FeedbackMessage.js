@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Message = (props) => {
   const { message } = props;
-  return <p className="feedbackTitle" data-testid="feedback-test">{message}</p>;
+  return (
+    <p className="feedbackTitle" data-testid="feedback-test">
+      {message}
+    </p>
+  );
 };
 
 const TotalScore = (props) => (
@@ -17,12 +22,13 @@ function messageByScore(wins) {
 }
 class FeedbackMessage extends Component {
   render() {
-    const { wins } = this.props;
+    const { score, assertions } = this.props;
     return (
       <div>
-        <Message message={messageByScore(wins)} />
-        <span className="feedbackText">Você acertou {wins} questões!</span><br />
-        <TotalScore score={'50'} />
+        <Message message={messageByScore(assertions)} />
+        <span className="feedbackText">Você acertou {assertions} questões!</span>
+        <br />
+        <TotalScore score={score} />
       </div>
     );
   }
@@ -37,7 +43,13 @@ TotalScore.propTypes = {
 };
 
 FeedbackMessage.propTypes = {
-  wins: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  assertions: PropTypes.number.isRequired,
 };
 
-export default FeedbackMessage;
+const mapStateToProps = (state) => ({
+  assertions: state.loginReducer.assertions,
+  score: state.loginReducer.score,
+});
+
+export default connect(mapStateToProps)(FeedbackMessage);

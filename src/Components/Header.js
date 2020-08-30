@@ -19,8 +19,9 @@ class Header extends Component {
             Jogador: {name}
           </p>
         </div>
+        Pontos:
         <p className="scoreStyle" data-testid="header-score">
-          Pontos: {score}
+          {score}
         </p>
       </header>
     );
