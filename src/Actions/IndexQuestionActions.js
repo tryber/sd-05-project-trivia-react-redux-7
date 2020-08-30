@@ -7,4 +7,4 @@ export const changeIndex = () => ({
 
 export const resetIndex = () => ({
   type: RESETINDEX,
-})
+});

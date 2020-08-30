@@ -15,7 +15,7 @@ const indexJogoReducer = (state = INITIALSTATUS, action) => {
       return {
         ...state,
         indexJogo: 0,
-      }
+      };
     default:
       return state;
   }
