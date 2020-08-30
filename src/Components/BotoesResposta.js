@@ -59,7 +59,7 @@ class BotoesResposta extends Component {
     const { handleClick, choosingAnswer, respondido, setingScore, setingAssertions } = this.props;
     return (
       <button
-        data-testid={'correct-answer'}
+        data-testid="correct-answer"
         className="buttonCorrectAnswer"
         onClick={() => {
           choosingAnswer();
