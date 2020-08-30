@@ -43,16 +43,11 @@ function ButtonFeedBack({ handleClick, resetingAnswer, respondido, userState }) 
 class BotaoProximo extends Component {
   render() {
     const {
-      handleClick,
-      indexChange,
-      resetingAnswer,
-      respondido,
-      indexJogo,
-      resetingTime,
-      blockAnswer,
-      name,
-      score,
-      picture,
+      handleClick, indexChange,
+      resetingAnswer, respondido,
+      indexJogo, resetingTime,
+      blockAnswer, name,
+      score, picture,
     } = this.props;
     const userState = { name, score, picture };
     return indexJogo === 4 ? (
@@ -108,7 +103,11 @@ ButtonFeedBack.propTypes = {
   handleClick: PropTypes.func.isRequired,
   resetingAnswer: PropTypes.func.isRequired,
   respondido: PropTypes.bool.isRequired,
-  userState: PropTypes.object.isRequired,
+  userState: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+    picture: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 ButtonNext.propTypes = {

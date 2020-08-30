@@ -8,17 +8,16 @@ const INITIAL_STATE = {
 };
 
 const loginReducer = (state = INITIAL_STATE, action) => {
-  let newState = {};
   switch (action.type) {
     case GET_GRAVATAR_SUCCESS:
       saveToLocalStorage(action.name, 0, 0, action.email);
-      return newState = {
+      return {
         ...state,
         gravatarLink: action.gravatarLink,
         name: action.name,
         email: action.email,
         isLogged: true,
-      };;
+      };
     case SETSCORE:
       return {
         ...state,
@@ -29,7 +28,7 @@ const loginReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         assertions: state.assertions + 1,
-      };;
+      };
     default:
       return state;
   }
