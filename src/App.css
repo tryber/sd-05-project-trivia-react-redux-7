@@ -178,15 +178,6 @@
 }
 
 /* Ranking */
-.btnInicio {
-  border-radius: 15px;
-  font-size: 20px;
-  height: 30px;
-  margin: 5px;
-  top: 0;
-  width: 300px;
-}
-
 .ranking {
   align-items: center;
   background-color: #000c;

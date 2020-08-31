@@ -13,7 +13,6 @@ const buttonHome = ({
 }) => (
   <Link to="/" data-testid="btn-go-home">
     <button
-      className="btnInicio buttonVerde"
       type="button"
       onClick={() => {
         resetingPlacar();
@@ -23,7 +22,7 @@ const buttonHome = ({
         resetingState();
       }}
     >
-      Voltar à Página Inicial.
+      Voltar à Página Inicial
     </button>
   </Link>
 );
