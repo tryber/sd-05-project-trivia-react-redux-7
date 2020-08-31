@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 function DadosUser(props) {
   const { picture, index, name, score } = props;
   return (
-    <div>
+    <div className="rankingItem">
       <img src={picture} alt="Avatar Player Name" />
-      <p data-testid={`player-name-${index}`}>{name}</p>
+      <p data-testid={`player-name-${index}`} className="rankingName">{name}</p>
       <p data-testid={`player-score-${index}`}>{score}</p>
     </div>
   );

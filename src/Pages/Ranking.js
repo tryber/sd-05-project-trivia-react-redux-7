@@ -6,8 +6,12 @@ export default class Ranking extends Component {
   render() {
     return (
       <div>
-        <UserRanking />
-        <BotaoInicio />
+        <div>
+          <BotaoInicio />
+        </div>
+        <div className="ranking">
+          <UserRanking />
+        </div>
       </div>
     );
   }

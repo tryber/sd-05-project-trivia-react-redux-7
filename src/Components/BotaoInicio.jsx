@@ -13,6 +13,7 @@ const buttonHome = ({
 }) => (
   <Link to="/" data-testid="btn-go-home">
     <button
+      className="btnInicio buttonVerde"
       type="button"
       onClick={() => {
         resetingPlacar();
