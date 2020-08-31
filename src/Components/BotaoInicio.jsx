@@ -23,7 +23,7 @@ const buttonHome = ({
         resetingState();
       }}
     >
-      Voltar à Página Inicial
+      Voltar à Página Inicial.
     </button>
   </Link>
 );

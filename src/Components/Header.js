@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
   const {
     loginReducer: { gravatarLink, name, score, assertions },
   } = state;
-
+  
   return {
     gravatarLink,
     name,
