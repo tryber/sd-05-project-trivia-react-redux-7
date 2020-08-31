@@ -1,35 +1,59 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-const Message = (props) => {
-  const { message } = props;
-  return <p className="feedbackTitle" data-testid="feedback-test">{message}</p>;
-};
-
-const TotalScore = (props) => (
-  <span className="feedbackText" data-testid="deedback-total-score">
-    Um total de <span>{props.score}</span> pontos
-  </span>
-);
+import { connect } from 'react-redux';
 
 function messageByScore(wins) {
   return wins >= 3 ? 'Mandou bem!' : 'Podia ser melhor...';
 }
+
+const Message = (props) => {
+  const { assertions } = props;
+  return (
+    <p className="feedbackTitle" data-testid="feedback-text">
+      {messageByScore(assertions)}
+    </p>
+  );
+};
+
+const TotalScore = (props) => (
+  <div className="feedbackText">
+    Um total de <span data-testid="feedback-total-score">{props.score}</span> pontos
+  </div>
+
+);
+
 class FeedbackMessage extends Component {
+  styleCont() {
+    const { assertions } = this.props;
+    if (assertions >= 3) {
+      return {
+        color: 'rgb(0,128,128)',
+        fontWeight: 'bold',
+      };
+    }
+    return {
+      color: 'rgb(212, 0, 0)',
+      fontWeight: 'bold',
+    };
+  }
+
   render() {
-    const { wins } = this.props;
+    const { score, assertions } = this.props;
     return (
-      <div>
-        <Message message={messageByScore(wins)} />
-        <span className="feedbackText">Você acertou {wins} questões!</span><br />
-        <TotalScore score={'50'} />
+      <div style={this.styleCont()}>
+        <Message assertions={assertions} />
+        <div className="feedbackText">
+          Você acertou <span data-testid="feedback-total-question">{assertions}</span> questões!
+        </div>
+        <br />
+        <TotalScore score={score} />
       </div>
     );
   }
 }
 
 Message.propTypes = {
-  message: PropTypes.string.isRequired,
+  assertions: PropTypes.number.isRequired,
 };
 
 TotalScore.propTypes = {
@@ -37,7 +61,13 @@ TotalScore.propTypes = {
 };
 
 FeedbackMessage.propTypes = {
-  wins: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+  assertions: PropTypes.number.isRequired,
 };
 
-export default FeedbackMessage;
+const mapStateToProps = (state) => ({
+  assertions: state.loginReducer.assertions,
+  score: state.loginReducer.score,
+});
+
+export default connect(mapStateToProps)(FeedbackMessage);

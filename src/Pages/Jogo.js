@@ -6,26 +6,41 @@ import CompCategory from '../Components/CompCategory';
 import { fechQuestion } from '../Actions';
 import BotaoProximo from '../Components/BotaoProximo';
 import '../App.css';
+import Header from '../Components/Header';
+import Contador from '../Components/Contador';
 
 class Jogo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      disabled: true,
+    };
+    this.finishQuestion = this.finishQuestion.bind(this);
+  }
+
   componentDidMount() {
     const { startNemQuestion } = this.props;
     startNemQuestion();
   }
 
+  finishQuestion() {
+    this.setState((state) => ({
+      disabled: !state.disabled,
+    }));
+  }
+
   render() {
-    const { login, questions, indexJogo, isFetching } = this.props;
+    const { questions, indexJogo, isFetching } = this.props;
     if (!isFetching) {
       const actualQuestion = questions[indexJogo];
       return (
         <div className="jogo">
-          <header className="header-jogo">
-            <img src={login.gravatarLink} alt="foto" data-testid="header-profile-picture" />
-            <h2 data-testid="header-player-name">{`Jogador: ${login.name}`}</h2>
-            <h6 data-testid="header-score">{'Nota: 0'}</h6>
-          </header>
+          <Header />
           <div>
             <div className="pergunta">
+              <div>
+                <Contador />
+              </div>
               <div className="category" data-testid="question-category">
                 <CompCategory />
               </div>
@@ -34,11 +49,11 @@ class Jogo extends Component {
                   question={actualQuestion.question}
                   correct_answer={actualQuestion.correct_answer}
                   incorrect_answers={actualQuestion.incorrect_answers}
+                  handleClick={this.finishQuestion}
                 />
               </div>
-              <div>{'Tempo: 30s'}</div>
             </div>
-            <BotaoProximo />
+            <BotaoProximo handleClick={this.finishQuestion} />
           </div>
         </div>
       );
@@ -63,7 +78,6 @@ const mapDispathToProps = (dispatch) => ({
 Jogo.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
   startNemQuestion: PropTypes.func.isRequired,
-  login: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
   indexJogo: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
